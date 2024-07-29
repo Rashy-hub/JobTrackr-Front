@@ -1,0 +1,11 @@
+#utils/
+# sass/
+# javascript/*.js
+# javascript/modules/*.js
+# javascript/libs/*.js
+# Ne pas ignorer les versions minifiées spécifiques
+# !javascript/*.min.css
+# !javascript/*.min.js
+# !javascript/modules/*.min.js
+# !javascript/libs/*.min.js
+

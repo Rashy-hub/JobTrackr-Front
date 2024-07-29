@@ -1,0 +1,71 @@
+/* header {
+    background-color: $secondary-color;
+    height: 10vh;
+    .dropdown {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        .logo {
+            font-weight: 900;
+            font-size: 20px;
+        }
+        ul {
+            display: flex;
+            gap: 20px;
+            font-weight: 900;
+        }
+    }
+}
+ */
+@use 'base';
+header {
+    color: base.$nav_text_color;
+    padding: 26px 180px;
+    max-height: 100px;
+    width: 100vw;
+    background: #bebebe;
+}
+
+.menusymbol {
+    font-weight: 900;
+    font-size: 20px;
+    height: 30px;
+    width: 30px;
+}
+nav {
+    @include base.flex-container;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    a {
+        font-weight: 900;
+        text-decoration: none;
+        color: white;
+    }
+    a:hover {
+        color: gold;
+    }
+}
+.dropdown {
+    @include base.flex-container;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.dropdown-content {
+    @include base.flex-container;
+    gap: 2rem;
+}
+.menusymbol {
+    @include base.flex-container;
+    width: 200px;
+}
+
+#dropbtn {
+    outline: none;
+    background-color: base.;
+    width: 4rem;
+    height: 2rem;
+}

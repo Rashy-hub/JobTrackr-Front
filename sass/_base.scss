@@ -1,0 +1,14 @@
+@mixin flex-container {
+    display: flex;
+    align-items: center;
+}
+
+@mixin center-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+$primary-background: #191b20;
+$secondary_background: rgba(20, 21, 23, 1);
+$nav_text_color: #1e1e1e;
