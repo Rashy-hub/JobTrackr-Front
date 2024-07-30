@@ -8,7 +8,7 @@
 @import '_update-user.scss';
  */
 @use '_base';
-@use '_header';
+@use '_login';
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
 
@@ -35,8 +35,18 @@ img {
     object-fit: fill;
 }
 h1 {
+    margin-top: 2rem;
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29.05px;
+    text-align: center;
+
     text-align: center;
 }
 .hide {
     display: none;
+}
+.show {
+    display: block;
 }
