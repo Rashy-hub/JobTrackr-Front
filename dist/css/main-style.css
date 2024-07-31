@@ -86,7 +86,7 @@ nav {
           box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   padding: 12px 16px;
   z-index: 1;
-  height: 100px;
+  height: 150px;
   background: wheat;
 }
 .dropdown-content a {
@@ -97,6 +97,9 @@ nav {
 }
 .dropdown-content a:hover {
   color: rgb(117, 103, 20);
+}
+.dropdown-content button {
+  margin-top: 10px;
 }
 
 .dropdown:hover .dropdown-content {
