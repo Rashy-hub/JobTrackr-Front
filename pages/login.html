@@ -9,34 +9,67 @@
             type="module"
             defer
         ></script>
+        <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
         <link rel="stylesheet" href="../dist/css/main-style.css" />
     </head>
     <body>
         <header>
             <nav>
-                <div class="logo">LOGO</div>
+                <div class="logo">
+                    <img
+                        src="../assets/logo_withoutbg_red-removed.png"
+                        alt=""
+                    />
+                </div>
             </nav>
         </header>
-        <main>
-            <h1>Login</h1>
-            <div>
-                <form action="">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required />
-
-                    <label for="password">Password:</label>
+        <div id="particles-js"></div>
+        <main class="login_main">
+            <h1 class="login_title">
+                Login <span class="loader hidden" id="loader"></span>
+            </h1>
+            <div class="login_container">
+                <form id="login_form" class="login_form">
+                    <label for="login_email" class="login_label">Email:</label>
                     <input
-                        type="password"
-                        id="password"
-                        name="password"
+                        type="email"
+                        id="login_email"
+                        name="email"
+                        class="login_input"
                         required
                     />
 
-                    <button type="submit">Login</button>
+                    <label for="login_password" class="login_label"
+                        >Password:</label
+                    >
+                    <input
+                        type="password"
+                        id="login_password"
+                        name="password"
+                        class="login_input"
+                        required
+                    />
+
+                    <button type="submit" class="login_button">Login</button>
                 </form>
-                <p>Not yet registered?</p>
-                <a href="../pages/register.html">Register</a>
+                <p class="login_prompt">Not yet registered?</p>
+                <a href="../pages/register.html" class="login_register_link"
+                    >Register</a
+                >
             </div>
+            <dialog id="dialog" class="dialog">
+                <div class="dialog_header">
+                    <h2 class="dialog_title">Dialog Title</h2>
+                </div>
+                <div class="dialog_body">
+                    <p class="dialog_message">Dialog body text</p>
+                </div>
+                <div class="dialog_footer">
+                    <button id="dialog_ok_button" class="dialog_button">
+                        OK
+                    </button>
+                </div>
+            </dialog>
         </main>
     </body>
 </html>

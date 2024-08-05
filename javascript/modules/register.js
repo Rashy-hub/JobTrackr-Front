@@ -1,37 +1,46 @@
 import { fetchData, getDynamicUrl } from '../libs/apiHandlers.js'
+import { initParticles } from '../libs/particle-style.js'
 
 console.log('register.js entry point')
 
-const myForm = document.forms[0]
+window.addEventListener('load', () => {
+    const myForm = document.forms[0]
 
-myForm.onsubmit = (event) => {
-    event.preventDefault()
-    //firstname , lastname ,email,github,profile-picture,password,confirm-password
-    const myfields = [
-        'firstname',
-        'lastname',
-        'email',
-        'github,profile-picture',
-        'password',
-        'confirmPassword',
-    ]
-    //FROM HERE I DONT KNOW IF IT IS CORRECT
-    //I WANT TO BE ABLE TO SEND AN OBJECT LIKE KEY VALUE WITH ONLY THE FIELDS THAT ARE NOT EMPTY
+    myForm.onsubmit = async (event) => {
+        event.preventDefault()
 
-    // Initialize an object to hold the filled fields
-    const filledFields = {}
+        const formData = new FormData(myForm)
 
-    for (const field of myfields) {
-        const fieldElement = myForm.elements[field]
-        if (fieldElement && fieldElement.value.trim()) {
-            filledFields[field] = fieldElement.value.trim()
+        // Construct payload for the API
+        const payload = {
+            body: {
+                firstname: formData.get('firstname'),
+                lastname: formData.get('lastname'),
+                email: formData.get('email'),
+                github: formData.get('github'),
+                password: formData.get('password'),
+                confirmPassword: formData.get('confirmPassword'),
+            },
+            files: {
+                profilePicture:
+                    formData.get('profilePicture').size > 0
+                        ? formData.get('profilePicture')
+                        : new Blob(),
+                cv:
+                    formData.get('cv').size > 0
+                        ? formData.get('cv')
+                        : new Blob(),
+            },
         }
-    }
 
-    fetchData(getDynamicUrl('REGISTER_USER', { body: filledFields })).then(
-        (userdata) => {
+        // Get the request URL configuration
+        const requestURL = getDynamicUrl('REGISTER_USER', payload)
+
+        // Fetch data and handle response
+        const userdata = await fetchData(requestURL)
+        if (userdata && userdata.user) {
             const username = userdata.user.firstname + userdata.user.lastname
-            //in order to stay connected ?
+            // In order to stay connected
             localStorage.setItem('token', userdata.token)
             localStorage.setItem('userID', userdata.user.id)
             localStorage.setItem('username', username)
@@ -40,9 +49,11 @@ myForm.onsubmit = (event) => {
             )}&password=${encodeURIComponent(
                 myForm.elements['password'].value
             )}`
-            // window.location.href = '../pages/login.html'
+        } else {
+            console.log('Registration failed')
+            // Optionally, handle the case when registration fails
         }
-    )
+    }
 
-    console.log('submit event fired')
-}
+    initParticles()
+})

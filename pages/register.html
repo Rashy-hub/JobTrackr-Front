@@ -9,72 +9,151 @@
             type="module"
             defer
         ></script>
+        <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
         <link rel="stylesheet" href="../dist/css/main-style.css" />
     </head>
     <body>
         <header>
             <nav>
-                <div class="logo">LOGO</div>
+                <div class="logo">
+                    <img
+                        src="../assets/logo_withoutbg_red-removed.png"
+                        alt=""
+                    />
+                </div>
             </nav>
         </header>
-        <main>
-            <h1>Register</h1>
+        <div id="particles-js"></div>
+        <main class="register_main">
+            <h1 class="register_title">
+                Register <span class="loader hidden" id="loader"></span>
+            </h1>
             <form
-                action="your-registration-handler.php"
+                id="register_form"
                 method="post"
                 enctype="multipart/form-data"
+                class="register_form"
             >
-                <label for="firstname">First Name:</label>
-                <input type="text" id="firstname" name="firstname" required />
-
-                <label for="lastname">Last Name:</label>
-                <input type="text" id="lastname" name="lastname" required />
-
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required />
-
-                <label for="github">GitHub Profile:</label>
-                <input type="text" id="github" name="github" />
-
-                <div class="file-input">
-                    <label for="profile-picture">Profile Picture:</label>
-                    <input
-                        type="file"
-                        id="profile-picture"
-                        name="profile-picture"
-                        accept="image/*"
-                    />
-                </div>
-
-                <div class="file-input">
-                    <label for="cv">CV (PDF):</label>
-                    <input
-                        type="file"
-                        id="cv"
-                        name="cv"
-                        accept="application/pdf"
-                    />
-                </div>
-
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required />
-
-                <label for="confirmPassword">Repeat Password:</label>
+                <label for="register_firstname" class="register_label"
+                    >First Name:</label
+                >
                 <input
-                    type="password"
-                    id="confirmPassword"
-                    name="confirmPassword"
+                    type="text"
+                    id="register_firstname"
+                    name="firstname"
+                    class="register_input"
                     required
                 />
 
-                <div class="submit-button">
-                    <input type="submit" value="Register" />
+                <label for="register_lastname" class="register_label"
+                    >Last Name:</label
+                >
+                <input
+                    type="text"
+                    id="register_lastname"
+                    name="lastname"
+                    class="register_input"
+                    required
+                />
+
+                <label for="register_email" class="register_label"
+                    >Email:</label
+                >
+                <input
+                    type="email"
+                    id="register_email"
+                    name="email"
+                    class="register_input"
+                    required
+                />
+
+                <label for="register_github" class="register_label"
+                    >GitHub Profile:</label
+                >
+                <input
+                    type="text"
+                    id="register_github"
+                    name="github"
+                    class="register_input"
+                />
+
+                <div class="register_file_input">
+                    <label for="register_profilePicture" class="register_label"
+                        >Profile Picture:</label
+                    >
+                    <input
+                        type="file"
+                        id="register_profilePicture"
+                        name="profilePicture"
+                        accept="image/*"
+                        class="register_input"
+                    />
                 </div>
 
-                <div class="login-link">
-                    <p>Already registered? <a href="login.html">Login</a></p>
+                <div class="register_file_input">
+                    <label for="register_cv" class="register_label"
+                        >CV (PDF):</label
+                    >
+                    <input
+                        type="file"
+                        id="register_cv"
+                        name="cv"
+                        accept="application/pdf"
+                        class="register_input"
+                    />
+                </div>
+
+                <label for="register_password" class="register_label"
+                    >Password:</label
+                >
+                <input
+                    type="password"
+                    id="register_password"
+                    name="password"
+                    class="register_input"
+                    required
+                />
+
+                <label for="register_confirmPassword" class="register_label"
+                    >Repeat Password:</label
+                >
+                <input
+                    type="password"
+                    id="register_confirmPassword"
+                    name="confirmPassword"
+                    class="register_input"
+                    required
+                />
+
+                <div class="register_submit_button">
+                    <input
+                        type="submit"
+                        value="Register"
+                        class="register_button"
+                    />
+                </div>
+
+                <div class="register_login_link">
+                    <p>
+                        Already registered?
+                        <a href="login.html" class="register_link">Login</a>
+                    </p>
                 </div>
             </form>
+            <!-- Keep dialog part unchanged -->
+            <dialog id="dialog" class="dialog">
+                <div class="dialog_header">
+                    <h2 class="dialog_title">Dialog Title</h2>
+                </div>
+                <div class="dialog_body">
+                    <p class="dialog_message">Dialog body text</p>
+                </div>
+                <div class="dialog_footer">
+                    <button id="dialog_ok_button" class="dialog_button">
+                        OK
+                    </button>
+                </div>
+            </dialog>
         </main>
     </body>
 </html>

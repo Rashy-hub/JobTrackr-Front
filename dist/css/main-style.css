@@ -8,20 +8,66 @@
 @import '_update-user.scss';
  */
 @import url("https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Special+Elite&display=swap");
+/* @import '_variables.scss';
+@import '_general.scss';
+@import '_register.scss';
+@import '_profile.scss';
+@import '_dashboard.scss';
+@import '_display-offer.scss';
+@import '_update-offer.scss';
+@import '_update-user.scss';
+ */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap");
-header {
-  color: #11ee1e;
-  padding: 26px 30px;
-  max-height: 100px;
-  width: 100vw;
-  background: #bebebe;
+/* Define the animation */
+@-webkit-keyframes tilt {
+  0% {
+    -webkit-transform: rotate(-5deg);
+            transform: rotate(-5deg); /* Tilt to the left */
+  }
+  50% {
+    -webkit-transform: rotate(5deg);
+            transform: rotate(5deg); /* Tilt to the right */
+  }
+  100% {
+    -webkit-transform: rotate(-5deg);
+            transform: rotate(-5deg); /* Return to initial tilt */
+  }
 }
-
-.menusymbol {
-  font-weight: 900;
-  font-size: 20px;
-  height: 30px;
-  width: 30px;
+@keyframes tilt {
+  0% {
+    -webkit-transform: rotate(-5deg);
+            transform: rotate(-5deg); /* Tilt to the left */
+  }
+  50% {
+    -webkit-transform: rotate(5deg);
+            transform: rotate(5deg); /* Tilt to the right */
+  }
+  100% {
+    -webkit-transform: rotate(-5deg);
+            transform: rotate(-5deg); /* Return to initial tilt */
+  }
+}
+header {
+  background: rgba(0, 123, 255, 0.47); /* Semi-transparent blue */
+  color: #fff;
+  padding: 26px 30px;
+  padding-top: 0px;
+  max-height: 100px;
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  font-family: "Playfair Display", serif;
+  position: relative; /* Ensure proper stacking context */
+  z-index: 2;
+}
+header .logo {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  -webkit-animation: tilt 1s infinite;
+          animation: tilt 1s infinite;
 }
 
 nav {
@@ -31,115 +77,137 @@ nav {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 100%;
-  display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
   gap: 20px;
+  width: 100%;
+}
+
+.nav-links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
+}
+.nav-links a {
+  font-weight: 900;
+  color: #ffffff;
+  text-decoration: none;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+.nav-links a:hover {
+  color: #f3f3f3;
+  text-decoration: underline;
 }
 
 .dropdown {
-  font-family: "Inter";
-  font-size: 20px;
-  font-weight: 900;
-  line-height: 24.2px;
-  text-align: left;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  display: inline-block;
   position: relative;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  gap: 1rem;
+  display: inline-block;
+  cursor: pointer;
 }
-
-.dropdown-content {
+.dropdown .dropdown-button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  gap: 10px;
+}
+.dropdown .dropdown-button #dropbtn {
+  width: 2rem;
+  height: 2rem;
+  background: transparent; /* Make background transparent */
+  border: none;
+  border-radius: 50%;
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  outline: none;
+  cursor: pointer;
+}
+.dropdown .dropdown-button #dropbtn img {
+  width: 100%;
+  height: auto;
+}
+.dropdown .dropdown-content {
+  display: none; /* Hide by default */
+  position: absolute;
+  top: 100%; /* Align below the button */
+  right: -5px;
+  top: 50px;
+  background: wheat;
+  -webkit-box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  padding: 12px 16px;
+  z-index: 10;
   font-size: 14px;
-  font-weight: 500 !important;
+  font-weight: 500;
+  border-radius: 4px;
+}
+.dropdown .dropdown-content a {
+  display: block;
+  font-weight: 900;
+  color: #007bff;
+  text-decoration: none;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+.dropdown .dropdown-content a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+.dropdown .dropdown-content button {
+  width: 80px;
+  height: 30px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s, -webkit-transform 0.2s;
+  transition: background-color 0.3s, -webkit-transform 0.2s;
+  transition: background-color 0.3s, transform 0.2s;
+  transition: background-color 0.3s, transform 0.2s, -webkit-transform 0.2s;
+  margin-top: 10px;
+  padding: 5px;
+}
+.dropdown .dropdown-content button:hover {
+  background-color: #0056b3;
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+}
+.dropdown.open .dropdown-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; /* Show when open */
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  display: none;
-  position: absolute;
-  gap: 2rem;
-  -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  padding: 12px 16px;
-  z-index: 1;
-  height: 150px;
-  background: wheat;
-}
-.dropdown-content a {
-  display: block;
-  font-weight: 900;
-  text-decoration: none;
-  color: black;
-}
-.dropdown-content a:hover {
-  color: rgb(117, 103, 20);
-}
-.dropdown-content button {
-  margin-top: 10px;
 }
 
-.dropdown:hover .dropdown-content {
-  display: block;
+.username {
+  font-family: "Playfair Display", serif;
+  color: #fff;
+  margin-right: 10px;
 }
 
-.menusymbol {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 200px;
-}
-
-#dropbtn {
-  outline: none;
+.logout-button {
   border: none;
-  background-color: #bebebe;
-  width: 4rem;
-  height: 2rem;
+  background: none;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
 }
-
-.logo {
-  font-family: "Inter";
-  font-size: 20px;
-  font-weight: 900;
-  line-height: 24.2px;
-  text-align: left;
-  color: black;
-}
-
-.ux_container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+.logout-button:hover {
+  color: #f3f3f3;
 }
 
 /* @import '_variables.scss';
@@ -168,7 +236,18 @@ main {
   align-items: center;
 }
 
-form {
+.profil_container {
+  background-color: white;
+  padding: 20px;
+  width: 300px;
+}
+
+.profil_title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profil_profile-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -176,17 +255,124 @@ form {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 300px; /* Ajuste la largeur selon tes besoins */
-  margin: 0 auto; /* Centrer le formulaire sur la page */
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-label {
-  margin-top: 10px;
+.profil_profile-picture img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+#profil_profileForm {
+  width: 100%;
+}
+
+.profil_form-group {
+  margin-bottom: 15px;
+}
+
+.profil_form-group label {
+  display: block;
   margin-bottom: 5px;
   font-weight: bold;
 }
 
-input {
+.profil_form-group input[type=text],
+.profil_form-group input[type=email],
+.profil_form-group input[type=url] {
+  width: calc(100% - 20px);
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+.profil_form-group input[readonly] {
+  background-color: #e9ecef;
+}
+
+.profil_button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  background-color: #007bff;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.profil_save-button {
+  background-color: #28a745;
+}
+
+.profil_button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+/* @import '_variables.scss';
+@import '_general.scss';
+@import '_register.scss';
+@import '_profile.scss';
+@import '_dashboard.scss';
+@import '_display-offer.scss';
+@import '_update-offer.scss';
+@import '_update-user.scss';
+ */
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1; /* Ensure particles are in the background */
+  pointer-events: none; /* Ensure other elements don't block mouse events */
+}
+
+.login_main {
+  font-family: "Playfair Display", serif;
+  position: relative;
+  z-index: 1; /* Ensure content is above particles */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px;
+}
+.login_main .login_title {
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.login_main .login_container .login_form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 300px; /* Adjust the width as needed */
+  margin: 0 auto; /* Center the form on the page */
+}
+.login_main .login_container .login_form .login_label {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.login_main .login_container .login_form .login_input {
   padding: 8px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
@@ -194,8 +380,7 @@ input {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
-
-button {
+.login_main .login_container .login_form .login_button {
   padding: 10px;
   background-color: #007bff;
   color: white;
@@ -203,23 +388,287 @@ button {
   border-radius: 4px;
   cursor: pointer;
 }
-
-button:hover {
+.login_main .login_container .login_form .login_button:hover {
   background-color: #0056b3;
 }
-
-p {
+.login_main .login_container .login_prompt {
   margin-top: 20px;
   font-size: 14px;
 }
-
-a {
+.login_main .login_container .login_register_link {
   color: #007bff;
   text-decoration: none;
 }
-
-a:hover {
+.login_main .login_container .login_register_link:hover {
   text-decoration: underline;
+}
+
+/* @import '_variables.scss';
+@import '_general.scss';
+@import '_register.scss';
+@import '_profile.scss';
+@import '_dashboard.scss';
+@import '_display-offer.scss';
+@import '_update-offer.scss';
+@import '_update-user.scss';
+ */
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1; /* Ensure particles are in the background */
+  pointer-events: none; /* Ensure other elements don't block mouse events */
+}
+
+.register_main {
+  font-family: "Playfair Display", serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px;
+}
+.register_main .register_title {
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.register_main .register_form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 300px; /* Adjust the width as needed */
+  margin: 0 auto; /* Center the form on the page */
+}
+.register_main .register_form .register_label {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.register_main .register_form .register_input {
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.register_main .register_form .register_button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s, -webkit-transform 0.2s;
+  transition: background-color 0.3s, -webkit-transform 0.2s;
+  transition: background-color 0.3s, transform 0.2s;
+  transition: background-color 0.3s, transform 0.2s, -webkit-transform 0.2s;
+}
+.register_main .register_form .register_button:hover {
+  background-color: #0056b3;
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+}
+.register_main .register_file_input {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.register_main .register_submit_button {
+  margin-top: 20px;
+}
+.register_main .register_login_link {
+  margin-top: 20px;
+  font-size: 14px;
+}
+.register_main .register_login_link .register_link {
+  color: #007bff;
+  text-decoration: none;
+}
+.register_main .register_login_link .register_link:hover {
+  text-decoration: underline;
+}
+
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -2; /* Ensure particles are in the background */
+}
+
+/* @import '_variables.scss';
+@import '_general.scss';
+@import '_register.scss';
+@import '_profile.scss';
+@import '_dashboard.scss';
+@import '_display-offer.scss';
+@import '_update-offer.scss';
+@import '_update-user.scss';
+ */
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -2; /* Ensure particles are in the background */
+}
+
+.create_main {
+  font-family: "Playfair Display", serif;
+  position: relative;
+  z-index: 1; /* Ensure content is above particles */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px;
+}
+.create_main .create_title {
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.create_main .create_container .create_form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 300px; /* Adjust the width as needed */
+  margin: 0 auto; /* Center the form on the page */
+}
+.create_main .create_container .create_form .create_label {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.create_main .create_container .create_form .create_input,
+.create_main .create_container .create_form .create_select,
+.create_main .create_container .create_form .create_textarea {
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.create_main .create_container .create_form .create_button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.create_main .create_container .create_form .create_button:hover {
+  background-color: #0056b3;
+}
+.create_main .create_container .create_form .create_subtitle {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+/* _info-modal.scss */
+/* Info modal styles */
+.dialog {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  width: 40%;
+  max-width: 500px;
+  padding: 25px;
+  border: none;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 1000;
+  overflow: hidden;
+  font-family: inherit;
+}
+.dialog::-ms-backdrop {
+  backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.4);
+}
+.dialog::backdrop {
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.dialog_header {
+  margin-bottom: 20px;
+}
+.dialog_header .dialog_title {
+  margin: 0;
+  font-size: 1.8em;
+  font-weight: 700;
+  color: #700303;
+}
+
+.dialog_body .dialog_message {
+  font-size: 1.2em;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #555;
+}
+
+.dialog_footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+.dialog_footer .dialog_button {
+  font-size: 1em;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s, -webkit-transform 0.2s;
+  transition: background-color 0.3s, -webkit-transform 0.2s;
+  transition: background-color 0.3s, transform 0.2s;
+  transition: background-color 0.3s, transform 0.2s, -webkit-transform 0.2s;
+}
+.dialog_footer .dialog_button:hover {
+  background-color: #0056b3;
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
 }
 
 *,
@@ -231,12 +680,18 @@ a:hover {
   padding: 0;
 }
 
-:root {
-  --swiper-navigation-sides-offset: -5%;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Disable scrollbars */
 }
 
 body {
-  background: rgba(128, 128, 128, 0.548);
+  background: -webkit-gradient(linear, left top, right top, from(#ff7e5f), to(#feb47b));
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
 }
 
 .body-noscroll {
@@ -252,12 +707,30 @@ img {
 
 h1 {
   margin-top: 2rem;
-  font-family: Inter;
+  font-family: "Inter";
   font-size: 24px;
   font-weight: 700;
   line-height: 29.05px;
   text-align: center;
   text-align: center;
+}
+
+button {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s, -webkit-transform 0.2s;
+  transition: background-color 0.3s, -webkit-transform 0.2s;
+  transition: background-color 0.3s, transform 0.2s;
+  transition: background-color 0.3s, transform 0.2s, -webkit-transform 0.2s;
+}
+
+button:hover {
+  background-color: #0056b3;
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
 }
 
 .hide {
@@ -266,4 +739,43 @@ h1 {
 
 .show {
   display: block;
+}
+
+/* Add styles for loader */
+.loader {
+  border: 4px solid rgba(0, 0, 0, 0.1); /* Light grey */
+  border-radius: 50%;
+  border-top: 4px solid #3498db; /* Blue */
+  width: 16px;
+  height: 16px;
+  -webkit-animation: spin 1s linear infinite;
+          animation: spin 1s linear infinite;
+  display: inline-block;
+  margin-left: 8px;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+/* Hide loader initially */
+.loader.hidden {
+  display: none;
 }

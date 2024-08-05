@@ -9,39 +9,50 @@
             type="module"
             defer
         ></script>
+        <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
         <link rel="stylesheet" href="../dist/css/main-style.css" />
     </head>
     <body>
         <header>
             <nav>
-                <div class="logo">LOGO</div>
-                <div class="ux_container">
+                <div class="logo">
+                    <img
+                        src="../assets/logo_withoutbg_red-removed.png"
+                        alt="Logo"
+                    />
+                </div>
+                <div class="nav-links">
                     <div class="dropdown">
-                        <div class="menusymbol">
-                            <span id="currentUsername">userName</span>
-                            <button id="dropbtn">
+                        <div class="dropdown-button">
+                            <span class="username" id="currentUsername"
+                                >userName</span
+                            >
+                            <div id="dropbtn">
                                 <img
                                     src="../assets/menuCircle.svg"
-                                    alt="circlesvg"
+                                    alt="Menu Icon"
                                 />
-                            </button>
+                            </div>
                         </div>
 
-                        <div class="dropdown-content" id="myDropdown">
-                            <a href="../pages/dashboard.html">DashBoard</a>
-                            <a href="../pages/profile.html">My Profil</a>
-                            <a href="../pages/create-update-job.html"
-                                >Add job</a
-                            >
+                        <div class="dropdown-content" id="dropdownContent">
+                            <a href="../pages/dashboard.html">Dashboard</a>
+                            <a href="../pages/profile.html">Profile</a>
+                            <a href="../pages/createJob.html">Add Job</a>
                             <hr />
-                            <button id="logoutButton">Logout</button>
+                            <button id="logoutButton" class="logout-button">
+                                Logout
+                            </button>
                         </div>
                     </div>
 
-                    <a href="../pages/login.html">My Profil</a>
+                    <a href="../pages/profile.html">Profile</a>
                 </div>
             </nav>
         </header>
-        <h1>This will be my DashBoard page</h1>
+        <div id="particles-js"></div>
+        <main class="dashboard_main">
+            <h1>DashBoard<span class="loader hidden" id="loader"></span></h1>
+        </main>
     </body>
 </html>

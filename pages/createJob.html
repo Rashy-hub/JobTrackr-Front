@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Create Job Page</title>
+        <script
+            src="../javascript/modules/createJob.js"
+            type="module"
+            defer
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"
+            defer
+        ></script>
+        <link rel="stylesheet" href="../dist/css/main-style.css" />
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div class="logo">
+                    <img
+                        src="../assets/logo_withoutbg_red-removed.png"
+                        alt="Logo"
+                    />
+                </div>
+                <div class="nav-links">
+                    <div class="dropdown">
+                        <div class="dropdown-button">
+                            <span class="username" id="currentUsername"
+                                >userName</span
+                            >
+                            <div id="dropbtn">
+                                <img
+                                    src="../assets/menuCircle.svg"
+                                    alt="Menu Icon"
+                                />
+                            </div>
+                        </div>
+
+                        <div class="dropdown-content" id="dropdownContent">
+                            <a href="../pages/dashboard.html">Dashboard</a>
+                            <a href="../pages/profile.html">Profile</a>
+                            <a href="../pages/createJob.html">Add Job</a>
+                            <hr />
+                            <button id="logoutButton" class="logout-button">
+                                Logout
+                            </button>
+                        </div>
+                    </div>
+
+                    <a href="../pages/profile.html">Profile</a>
+                </div>
+            </nav>
+        </header>
+
+        <div id="particles-js"></div>
+        <main class="create_main">
+            <h1 class="create_title">
+                Create Job<span class="loader hidden" id="loader"></span>
+            </h1>
+            <div class="create_container">
+                <form id="create_job_form" class="create_form">
+                    <label for="job_title" class="create_label"
+                        >Job Title:</label
+                    >
+                    <input
+                        type="text"
+                        id="job_title"
+                        name="jobTitle"
+                        class="create_input"
+                        required
+                    />
+
+                    <label for="website" class="create_label">Website:</label>
+                    <input
+                        type="url"
+                        id="website"
+                        name="website"
+                        class="create_input"
+                        required
+                    />
+
+                    <h2 class="create_subtitle">Employer's Contact</h2>
+
+                    <label for="employer_name" class="create_label"
+                        >Name:</label
+                    >
+                    <input
+                        type="text"
+                        id="employer_name"
+                        name="employerName"
+                        class="create_input"
+                    />
+
+                    <label for="employer_email" class="create_label"
+                        >Email:</label
+                    >
+                    <input
+                        type="email"
+                        id="employer_email"
+                        name="employerEmail"
+                        class="create_input"
+                    />
+
+                    <label for="employer_phone" class="create_label"
+                        >Phone:</label
+                    >
+                    <input
+                        type="tel"
+                        id="employer_phone"
+                        name="employerPhone"
+                        class="create_input"
+                    />
+
+                    <label for="employer_address" class="create_label"
+                        >Address:</label
+                    >
+                    <input
+                        type="text"
+                        id="employer_address"
+                        name="employerAddress"
+                        class="create_input"
+                    />
+
+                    <label for="origin" class="create_label">Origin:</label>
+                    <select
+                        id="origin"
+                        name="origin"
+                        class="create_select"
+                        required
+                    >
+                        <option value="candidature spontanée">
+                            Candidature Spontanée
+                        </option>
+                        <option value="job offer">Job Offer</option>
+                    </select>
+
+                    <label for="status" class="create_label">Status:</label>
+                    <select
+                        id="status"
+                        name="status"
+                        class="create_select"
+                        required
+                    >
+                        <option value="interested">Interested</option>
+                        <option value="cv sent">CV Sent</option>
+                        <option value="negative">Negative</option>
+                        <option value="interview">Interview</option>
+                    </select>
+
+                    <label for="comments" class="create_label">Comments:</label>
+                    <textarea
+                        id="comments"
+                        name="comments"
+                        class="create_textarea"
+                    ></textarea>
+
+                    <button type="submit" class="create_button">Save</button>
+                </form>
+            </div>
+        </main>
+    </body>
+</html>

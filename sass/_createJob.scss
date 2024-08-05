@@ -1,17 +1,17 @@
 @use 'base';
 
-// particule css
+// Particles CSS
 #particles-js {
     position: fixed;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-    z-index: -1; /* Ensure particles are in the background */
-    pointer-events: none; /* Ensure other elements don't block mouse events */
+    z-index: -2; /* Ensure particles are in the background */
 }
+
 // Main container styles
-.login_main {
+.create_main {
     font-family: 'Playfair Display', serif;
     position: relative;
     z-index: 1; /* Ensure content is above particles */
@@ -20,26 +20,28 @@
     align-items: center;
     padding: 20px;
 
-    .login_title {
+    .create_title {
         font-family: 'Playfair Display', serif;
         font-size: 2rem;
         margin-bottom: 20px;
     }
 
-    .login_container {
-        .login_form {
+    .create_container {
+        .create_form {
             display: flex;
             flex-direction: column;
             width: 300px; /* Adjust the width as needed */
             margin: 0 auto; /* Center the form on the page */
 
-            .login_label {
+            .create_label {
                 margin-top: 10px;
                 margin-bottom: 5px;
                 font-weight: bold;
             }
 
-            .login_input {
+            .create_input,
+            .create_select,
+            .create_textarea {
                 padding: 8px;
                 margin-bottom: 10px;
                 border: 1px solid #ccc;
@@ -47,7 +49,7 @@
                 box-sizing: border-box;
             }
 
-            .login_button {
+            .create_button {
                 padding: 10px;
                 background-color: #007bff;
                 color: white;
@@ -59,19 +61,12 @@
                     background-color: #0056b3;
                 }
             }
-        }
 
-        .login_prompt {
-            margin-top: 20px;
-            font-size: 14px;
-        }
-
-        .login_register_link {
-            color: #007bff;
-            text-decoration: none;
-
-            &:hover {
-                text-decoration: underline;
+            .create_subtitle {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.5rem;
+                margin-top: 20px;
+                margin-bottom: 10px;
             }
         }
     }

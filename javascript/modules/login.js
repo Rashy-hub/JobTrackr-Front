@@ -1,4 +1,5 @@
 import { fetchData, getDynamicUrl } from '../libs/apiHandlers.js'
+import { initParticles } from '../libs/particle-style.js'
 
 window.addEventListener('load', () => {
     if (!sessionStorage.getItem('pageLoaded')) {
@@ -12,6 +13,7 @@ window.addEventListener('load', () => {
         // Code to run on subsequent page loads
         console.log('Window has been loaded before.')
     }
+    initParticles()
 })
 
 // Function to get query parameters
@@ -26,11 +28,16 @@ function getQueryParams() {
 // Pre-fill form fields with query parameters
 function prefillForm() {
     const params = getQueryParams()
+    const myemail = document.getElementById('login_email')
+    const mypassword = document.getElementById('login_password')
+
+    myemail.value = ''
+    mypassword.password = ''
     if (params.email) {
-        document.getElementById('email').value = params.email
+        myemail.value = params.email
     }
     if (params.password) {
-        document.getElementById('password').value = params.password
+        mypassword.password = params.password
     }
 }
 
@@ -67,6 +74,7 @@ myForm.onsubmit = (event) => {
         })
         .catch((err) => {
             console.log(err)
+            myForm.reset()
             //display function custom error
         })
 

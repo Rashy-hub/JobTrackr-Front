@@ -1,36 +1,74 @@
-.profile-section{
-    height: 90vh;
-    position: relative;
-    .container{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 40px;
-    }
-        
-        .profile{
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 40px;
+.profil_container {
+    background-color: white;
+    padding: 20px;
+    //border-radius: 8px;
+    //box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
 
-        button{
-            font-size: 16px;
-            width: 160px;
-        } 
-        .profile-info{
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            column-gap: 10px;
-        }   
-        }
-    }
-    .profile-picture img{
-        width: 200px;
-        height: 100%;
-    }
+.profil_title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profil_profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profil_profile-picture img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+#profil_profileForm {
+    width: 100%;
+}
+
+.profil_form-group {
+    margin-bottom: 15px;
+}
+
+.profil_form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.profil_form-group input[type='text'],
+.profil_form-group input[type='email'],
+.profil_form-group input[type='url'] {
+    width: calc(100% - 20px);
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+.profil_form-group input[readonly] {
+    background-color: #e9ecef;
+}
+
+.profil_button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    background-color: #007bff;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.profil_save-button {
+    background-color: #28a745;
+}
+
+.profil_button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}

@@ -1,0 +1,69 @@
+/* _info-modal.scss */
+
+/* Info modal styles */
+.dialog {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 40%;
+    max-width: 500px;
+    padding: 25px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    overflow: hidden;
+    font-family: inherit;
+
+    &::backdrop {
+        backdrop-filter: blur(5px);
+        background: rgba(0, 0, 0, 0.4);
+    }
+}
+
+.dialog_header {
+    margin-bottom: 20px;
+
+    .dialog_title {
+        margin: 0;
+        font-size: 1.8em;
+        font-weight: 700;
+        color: #700303;
+    }
+}
+
+.dialog_body {
+    .dialog_message {
+        font-size: 1.2em;
+        font-weight: 600;
+        line-height: 1.5;
+        color: #555;
+    }
+}
+
+.dialog_footer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+
+    .dialog_button {
+        font-size: 1em;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+
+        &:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+    }
+}

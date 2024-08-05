@@ -1,0 +1,158 @@
+@use '_base';
+
+/* Define the animation */
+@keyframes tilt {
+    0% {
+        transform: rotate(-5deg); /* Tilt to the left */
+    }
+    50% {
+        transform: rotate(5deg); /* Tilt to the right */
+    }
+    100% {
+        transform: rotate(-5deg); /* Return to initial tilt */
+    }
+}
+
+header {
+    background: rgba(0, 123, 255, 0.47); /* Semi-transparent blue */
+    color: #fff;
+    padding: 26px 30px;
+    padding-top: 0px;
+    max-height: 100px;
+    backdrop-filter: blur(8px);
+    font-family: 'Playfair Display', serif;
+    position: relative; /* Ensure proper stacking context */
+    z-index: 2;
+
+    .logo {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        overflow: hidden;
+        cursor: pointer;
+        animation: tilt 1s infinite;
+    }
+}
+
+nav {
+    @include base.flex-container;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+}
+
+.nav-links {
+    @include base.flex-container;
+    gap: 20px;
+
+    a {
+        font-weight: 900;
+        color: #ffffff;
+        text-decoration: none;
+        transition: color 0.3s;
+
+        &:hover {
+            color: #f3f3f3;
+            text-decoration: underline;
+        }
+    }
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+
+    .dropdown-button {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        #dropbtn {
+            width: 2rem;
+            height: 2rem;
+            background: transparent; /* Make background transparent */
+            border: none;
+            border-radius: 50%;
+            backdrop-filter: blur(8px);
+            outline: none;
+            cursor: pointer;
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+
+    .dropdown-content {
+        display: none; /* Hide by default */
+        position: absolute;
+        top: 100%; /* Align below the button */
+
+        right: -5px;
+        top: 50px;
+        background: wheat;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        padding: 12px 16px;
+        z-index: 10;
+        font-size: 14px;
+        font-weight: 500;
+        border-radius: 4px;
+
+        a {
+            display: block;
+            font-weight: 900;
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s;
+
+            &:hover {
+                color: #0056b3;
+                text-decoration: underline;
+            }
+        }
+
+        button {
+            width: 80px;
+            height: 30px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-top: 10px;
+            padding: 5px;
+
+            &:hover {
+                background-color: #0056b3;
+                transform: translateY(-2px);
+            }
+        }
+    }
+
+    &.open .dropdown-content {
+        display: flex; /* Show when open */
+        flex-direction: column;
+    }
+}
+
+.username {
+    font-family: 'Playfair Display', serif;
+    color: #fff;
+    margin-right: 10px;
+}
+
+.logout-button {
+    border: none;
+    background: none;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    transition: color 0.3s;
+
+    &:hover {
+        color: #f3f3f3;
+    }
+}
