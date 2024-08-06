@@ -22,6 +22,13 @@ export const API_CONFIG = {
         withBearer: true,
         hasFiles: false,
     },
+    GET_JOBS: {
+        method: 'GET',
+        endpoint: '/jobs',
+        payload: {},
+        withBearer: true,
+        hasFiles: false,
+    },
 }
 
 // Function to show or hide the loader
@@ -87,20 +94,15 @@ export async function fetchData(requestURL) {
 
             // Append body fields to FormData
             for (let key in requestURL.payload.body) {
-                if (requestURL.payload.body[key]) {
-                    formData.append(key, requestURL.payload.body[key])
-                }
+                formData.append(key, requestURL.payload.body[key])
             }
 
             // Append files to FormData
             for (let key in requestURL.payload.files) {
-                if (
-                    requestURL.payload.files[key] &&
-                    requestURL.payload.files[key].size > 0
-                ) {
+                if (requestURL.payload.files[key]) {
                     formData.append(key, requestURL.payload.files[key])
                 } else {
-                    formData.append(key, new Blob()) // Append an empty Blob if the file is not provided
+                    formData.append(key, null) // Append null if the file is not provided
                 }
             }
 
@@ -131,7 +133,7 @@ export async function fetchData(requestURL) {
         }
 
         const jsonResponse = await response.json()
-        console.log(JSON.stringify(jsonResponse))
+
         return jsonResponse
     } catch (err) {
         infoDialogHandler({

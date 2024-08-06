@@ -4,5 +4,165 @@
     height: 100%;
     top: 0;
     left: 0;
-    z-index: -2; /* Ensure particles are in the background */
+    z-index: -2;
+}
+
+.dashboard_main {
+    font-family: 'Playfair Display', serif;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.add-job-button {
+    margin-left: 20px;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1em;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: #388e3c;
+    }
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+
+    .filter {
+        background-color: #4caf50;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        margin: 0 10px;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 1em;
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: #388e3c;
+        }
+
+        &.active {
+            background-color: #ff6347;
+        }
+    }
+
+    .filter-select {
+        margin: 0 10px;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 1em;
+    }
+}
+
+.job-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px auto;
+    width: 1200px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+}
+
+.job-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+
+    &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .job-card-content {
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+
+        h2 {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .job-details {
+            font-size: 1em;
+            margin-bottom: 5px;
+
+            &.title {
+                font-weight: bold;
+                color: #4caf50;
+            }
+
+            &.contact-name,
+            &.contact-email,
+            &.contact-phone,
+            &.contact-address {
+                color: #555;
+            }
+        }
+
+        .job-status {
+            margin-top: auto;
+            font-size: 0.9em;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .status-negative {
+            background-color: red;
+        }
+
+        .status-interested {
+            background-color: yellow;
+        }
+
+        .status-cv-sent {
+            background-color: blue;
+        }
+
+        .status-interview {
+            background-color: green;
+        }
+    }
+
+    .see-more {
+        align-self: flex-end;
+        margin-top: 10px;
+        padding: 5px 10px;
+        background-color: #4caf50;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 0.9em;
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: #388e3c;
+        }
+    }
 }

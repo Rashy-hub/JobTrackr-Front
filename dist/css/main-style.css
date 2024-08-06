@@ -507,7 +507,183 @@ main {
   height: 100%;
   top: 0;
   left: 0;
-  z-index: -2; /* Ensure particles are in the background */
+  z-index: -2;
+}
+
+.dashboard_main {
+  font-family: "Playfair Display", serif;
+  position: relative;
+  z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px;
+}
+
+.add-job-button {
+  margin-left: 20px;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1em;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+.add-job-button:hover {
+  background-color: #388e3c;
+}
+
+.controls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 20px 0;
+}
+.controls .filter {
+  background-color: #4caf50;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  margin: 0 10px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1em;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+.controls .filter:hover {
+  background-color: #388e3c;
+}
+.controls .filter.active {
+  background-color: #ff6347;
+}
+.controls .filter-select {
+  margin: 0 10px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.job-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 20px auto;
+  width: 1200px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+}
+
+.job-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  width: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow: hidden;
+  -webkit-transition: -webkit-transform 0.3s, -webkit-box-shadow 0.3s;
+  transition: -webkit-transform 0.3s, -webkit-box-shadow 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s, -webkit-transform 0.3s, -webkit-box-shadow 0.3s;
+}
+.job-card:hover {
+  -webkit-transform: translateY(-10px);
+          transform: translateY(-10px);
+  -webkit-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.job-card .job-card-content {
+  padding: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+.job-card .job-card-content h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+.job-card .job-card-content .job-details {
+  font-size: 1em;
+  margin-bottom: 5px;
+}
+.job-card .job-card-content .job-details.title {
+  font-weight: bold;
+  color: #4caf50;
+}
+.job-card .job-card-content .job-details.contact-name, .job-card .job-card-content .job-details.contact-email, .job-card .job-card-content .job-details.contact-phone, .job-card .job-card-content .job-details.contact-address {
+  color: #555;
+}
+.job-card .job-card-content .job-status {
+  margin-top: auto;
+  font-size: 0.9em;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+.job-card .job-card-content .status-negative {
+  background-color: red;
+}
+.job-card .job-card-content .status-interested {
+  background-color: yellow;
+}
+.job-card .job-card-content .status-cv-sent {
+  background-color: blue;
+}
+.job-card .job-card-content .status-interview {
+  background-color: green;
+}
+.job-card .see-more {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #4caf50;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 0.9em;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+.job-card .see-more:hover {
+  background-color: #388e3c;
 }
 
 /* @import '_variables.scss';
@@ -686,7 +862,7 @@ body {
   padding: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden; /* Disable scrollbars */
+  overflow-x: hidden; /* Disable scrollbars */
 }
 
 body {

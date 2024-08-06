@@ -9,7 +9,11 @@
             type="module"
             defer
         ></script>
-        <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"
+            defer
+        ></script>
+
         <link rel="stylesheet" href="../dist/css/main-style.css" />
     </head>
     <body>
@@ -34,7 +38,6 @@
                                 />
                             </div>
                         </div>
-
                         <div class="dropdown-content" id="dropdownContent">
                             <a href="../pages/dashboard.html">Dashboard</a>
                             <a href="../pages/profile.html">Profile</a>
@@ -45,14 +48,48 @@
                             </button>
                         </div>
                     </div>
-
                     <a href="../pages/profile.html">Profile</a>
                 </div>
             </nav>
         </header>
         <div id="particles-js"></div>
         <main class="dashboard_main">
-            <h1>DashBoard<span class="loader hidden" id="loader"></span></h1>
+            <h1>
+                DashBoard
+                <span class="loader hidden" id="loader"></span>
+                <a href="../pages/createJob.html" class="add-job-button"
+                    >Add Job</a
+                >
+            </h1>
+            <div class="controls">
+                <select id="statusFilter" class="filter-select">
+                    <option value="all">All</option>
+                    <option value="cv-sent">CV Sent</option>
+                    <option value="negative">Negative</option>
+                    <option value="interested">Interested</option>
+                    <option value="interview">Interview</option>
+                </select>
+                <select id="dateFilter" class="filter-select">
+                    <option value="desc">Date Descending</option>
+                    <option value="asc">Date Ascending</option>
+                </select>
+            </div>
+            <div id="job-list" class="job-list">
+                <!-- Jobs will be dynamically inserted here -->
+            </div>
+            <dialog id="dialog" class="dialog">
+                <div class="dialog_header">
+                    <h2 class="dialog_title">Dialog Title</h2>
+                </div>
+                <div class="dialog_body">
+                    <p class="dialog_message">Dialog body text</p>
+                </div>
+                <div class="dialog_footer">
+                    <button id="dialog_ok_button" class="dialog_button">
+                        OK
+                    </button>
+                </div>
+            </dialog>
         </main>
     </body>
 </html>

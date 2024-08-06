@@ -22,14 +22,8 @@ window.addEventListener('load', () => {
                 confirmPassword: formData.get('confirmPassword'),
             },
             files: {
-                profilePicture:
-                    formData.get('profilePicture').size > 0
-                        ? formData.get('profilePicture')
-                        : new Blob(),
-                cv:
-                    formData.get('cv').size > 0
-                        ? formData.get('cv')
-                        : new Blob(),
+                profilePicture: formData.get('profilePicture') || null,
+                cv: formData.get('cv') || null,
             },
         }
 
@@ -44,11 +38,7 @@ window.addEventListener('load', () => {
             localStorage.setItem('token', userdata.token)
             localStorage.setItem('userID', userdata.user.id)
             localStorage.setItem('username', username)
-            window.location.href = `/pages/login.html?email=${encodeURIComponent(
-                userdata.user.email
-            )}&password=${encodeURIComponent(
-                myForm.elements['password'].value
-            )}`
+            window.location.href = `/pages/dashboard.html`
         } else {
             console.log('Registration failed')
             // Optionally, handle the case when registration fails

@@ -91,6 +91,11 @@ jobForm.onsubmit = async (event) => {
     const response = await fetchData(requestURL)
         .then((result) => {
             console.log(result)
+            infoDialogHandler({
+                title: 'Operation sucessfull',
+                message: `Job ${payload.body.title} added`,
+            })
+            window.location.href = `/pages/dashboard.html`
             // window.location.href = '../pages/login.html'
         })
         .catch((err) => {
