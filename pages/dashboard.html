@@ -13,7 +13,10 @@
             src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"
             defer
         ></script>
-
+        <script
+            src="https://cdn.jsdelivr.net/npm/isotope-layout@3/dist/isotope.pkgd.min.js"
+            defer
+        ></script>
         <link rel="stylesheet" href="../dist/css/main-style.css" />
     </head>
     <body>
@@ -63,11 +66,11 @@
             </h1>
             <div class="controls">
                 <select id="statusFilter" class="filter-select">
-                    <option value="all">All</option>
-                    <option value="cv-sent">CV Sent</option>
-                    <option value="negative">Negative</option>
-                    <option value="interested">Interested</option>
-                    <option value="interview">Interview</option>
+                    <option value="*">All</option>
+                    <option value=".cv-sent">CV Sent</option>
+                    <option value=".negative">Negative</option>
+                    <option value=".interested">Interested</option>
+                    <option value=".interview">Interview</option>
                 </select>
                 <select id="dateFilter" class="filter-select">
                     <option value="desc">Date Descending</option>

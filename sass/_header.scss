@@ -15,6 +15,8 @@
 
 header {
     background: rgba(0, 123, 255, 0.47); /* Semi-transparent blue */
+    // background: rgba(255, 191, 0, 0.47);
+    background: transparent;
     color: #fff;
     padding: 26px 30px;
     padding-top: 0px;
@@ -25,8 +27,8 @@ header {
     z-index: 2;
 
     .logo {
-        width: 90px;
-        height: 90px;
+        width: 150px;
+        height: 150px;
         border-radius: 50%;
         overflow: hidden;
         cursor: pointer;
@@ -46,8 +48,9 @@ nav {
     gap: 20px;
 
     a {
-        font-weight: 900;
-        color: #ffffff;
+        font-weight: 600;
+        color: #0b0000;
+        font-size: 2rem;
         text-decoration: none;
         transition: color 0.3s;
 
@@ -102,7 +105,7 @@ nav {
 
         a {
             display: block;
-            font-weight: 900;
+            font-weight: 600;
             color: #007bff;
             text-decoration: none;
             transition: color 0.3s;
@@ -140,7 +143,9 @@ nav {
 
 .username {
     font-family: 'Playfair Display', serif;
-    color: #fff;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #000000;
     margin-right: 10px;
 }
 

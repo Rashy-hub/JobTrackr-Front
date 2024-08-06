@@ -1,7 +1,6 @@
 import { setupDropdownVisibility } from '../libs/modalHandler.js'
 import { initParticles } from '../libs/particle-style.js'
 import { fetchData, getDynamicUrl } from '../libs/apiHandlers.js'
-import { mixitup } from '../libs/apiHandlers.min.js'
 
 console.log('dashboard.js entry point')
 
@@ -12,6 +11,7 @@ function debounce(func, wait) {
         timeout = setTimeout(() => func.apply(this, args), wait)
     }
 }
+
 async function initDashboard() {
     const requestURL = getDynamicUrl('GET_JOBS')
     const jobs = await fetchData(requestURL)
@@ -24,9 +24,9 @@ async function initDashboard() {
                     .toLowerCase()
                     .replace(/ /g, '-')
                 return `
-                    <div class="job-card mix ${statusClass}" data-date="${new Date(
+                    <div class="job-card ${statusClass}" data-date="${new Date(
                     job.createdAt
-                ).toISOString()}">
+                ).getTime()}">
                         <div class="job-card-content">
                             <h2 class="title">${job.title}</h2>
                             <p class="job-details contact-name">Contact Name: ${
@@ -49,86 +49,43 @@ async function initDashboard() {
                     </div>`
             })
             .join('')
-        console.log(jobListElement)
+
+        const iso = new Isotope(jobListElement, {
+            itemSelector: '.job-card',
+            layoutMode: 'fitRows',
+            transitionDuration: '0.4s', // Adjust the duration for smoother animation
+            stagger: 30, // Add a slight stagger to the animation
+            getSortData: {
+                date: '[data-date] parseInt',
+            },
+            sortBy: 'date',
+            sortAscending: false,
+        })
+
+        document.getElementById('statusFilter').addEventListener(
+            'change',
+            debounce(function () {
+                const filterValue = this.value
+                console.log('Status Filter changed:', filterValue)
+                iso.arrange({
+                    filter: filterValue === 'all' ? '*' : `${filterValue}`,
+                })
+            }, 300)
+        )
+
+        document.getElementById('dateFilter').addEventListener(
+            'change',
+            debounce(function () {
+                const sortOrder = this.value === 'asc' ? true : false
+                console.log('Date Filter changed:', sortOrder)
+                iso.arrange({ sortBy: 'date', sortAscending: sortOrder })
+            }, 300)
+        )
     } else {
         console.error('Failed to load jobs data')
     }
 }
-function initMixitUp() {
-    var mixer = mixitup('.job-list', {
-        selectors: {
-            target: '.job-card',
-        },
-        animation: {
-            duration: 300,
-            queue: true,
-            // queueLimit: 5,
-        },
-        load: {
-            sort: 'date:desc',
-            filter: 'all',
-        },
-        controls: {
-            live: true,
-            toggleLogic: 'or',
-            enable: true,
-        },
-        callbacks: {
-            onMixStart: function (state, futureState) {
-                console.log(
-                    `${state.activeFilter.selector} and also future is :${futureState.activeFilter.selector} `
-                )
-            },
-            onMixEnd: function (state) {
-                console.log('On Mix End ' + state.activeFilter.selector) // Logs the active filter
-            },
-            onMixFail: function (state) {
-                console.error(
-                    'Mixing failed, no elements matched the filter: ' +
-                        state.activeFilter.selector
-                )
-            },
-            onMixBusy: function (state) {
-                console.log('MixItUp is busy')
-            },
-        },
-        debug: {
-            enable: true, // Enables debug mode
-            showWarnings: true, // Show warnings in the console
-            fauxAsync: true, // Helps to debug asynchronous operations
-        },
-    })
 
-    // Event listener for statusFilter
-    document.getElementById('statusFilter').addEventListener(
-        'change',
-        debounce(function (event) {
-            const filterValue = event.target.value
-            console.log('Status Filter changed: ' + filterValue)
-            mixer
-                .filter(filterValue === 'all' ? 'all' : `.${filterValue}`)
-                .then((state) =>
-                    console.log('Filter applied successfully', state)
-                )
-                .catch((error) => console.error('Error applying filter', error))
-        }, 300)
-    )
-
-    // Event listener for dateFilter
-    document.getElementById('dateFilter').addEventListener(
-        'change',
-        debounce(function (event) {
-            const sortOrder = event.target.value
-            console.log('Date Filter changed: ' + sortOrder)
-            mixer
-                .sort(sortOrder === 'asc' ? 'date:asc' : 'date:desc')
-                .then((state) =>
-                    console.log('Sort by date applied successfully', state)
-                )
-                .catch((error) => console.error('Error applying sort', error))
-        }, 300)
-    )
-}
 const userNameSpan = document.getElementById('currentUsername')
 const token = localStorage.getItem('token')
 const userId = localStorage.getItem('userID')
@@ -150,9 +107,8 @@ logoutButton.addEventListener('click', (event) => {
     window.location.href = '/pages/login.html'
 })
 
-window.addEventListener('load', async () => {
+window.addEventListener('load', () => {
     initParticles()
     setupDropdownVisibility()
-    await initDashboard()
-    initMixitUp()
+    initDashboard()
 })
