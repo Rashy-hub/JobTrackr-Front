@@ -17,7 +17,9 @@
     padding: 20px;
 }
 
-.add-job-button {
+.add-job-button,
+.clearall-job-button,
+.populate-job-button {
     margin-left: 20px;
     padding: 10px 20px;
     background-color: #4caf50;
@@ -30,6 +32,14 @@
 
     &:hover {
         background-color: #388e3c;
+    }
+}
+.clearall-job-button {
+    background-color: orange;
+    color: black;
+
+    &:hover {
+        background-color: #ff6347;
     }
 }
 
@@ -69,21 +79,34 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+
     margin: 20px auto;
     width: 100%;
-    max-width: 1200px;
-    padding: 10px;
-    background-color: #f0f0f0;
+    max-width: 1400px;
+    padding: 2rem;
+
+    //background: linear-gradient(145deg, #e0e0e0, #b0b0b0);
+    //background: url('../assets/rustic-wooden-background.jpg');
+    background: url('/assets/rustic-wooden-background.jpg') no-repeat center
+        center;
+    background-size: cover; /* This will ensure the image covers the entire area */
+
+    box-shadow: inset 1px 1px 3px #ffffff, inset -1px -1px 3px #a0a0a0,
+        2px 2px 6px rgba(0, 0, 0, 0.2);
+
     border-radius: 10px;
 }
 
 .job-card {
-    background-color: #fff;
+    position: relative;
+    background-color: #ffe4e4;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 10px;
+    cursor: pointer;
     width: 300px;
+
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -95,39 +118,22 @@
     }
 
     .job-card-content {
-        padding: 15px;
+        padding: 10px;
+        padding-bottom: 0px;
+        padding-right: 0px;
         display: flex;
         flex-direction: column;
         flex-grow: 1;
 
-        h2 {
-            font-size: 1.5em;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #333;
-        }
-
-        .job-details {
-            font-size: 1em;
-            margin-bottom: 5px;
-
-            &.title {
-                font-weight: bold;
-                color: #4caf50;
-            }
-
-            &.contact-name,
-            &.contact-email,
-            &.contact-phone,
-            &.contact-address {
-                color: #555;
-            }
-        }
-
         .job-status {
-            margin-top: auto;
-            font-size: 0.9em;
-            color: #fff;
+            font-family: 'Playfair Display', serif;
+            position: absolute;
+            right: 0;
+            top: -5px;
+
+            font-size: 1rem;
+            font-weight: 900;
+            color: #ffffff;
             padding: 5px 10px;
             border-radius: 5px;
             text-align: center;
@@ -148,13 +154,31 @@
         .status-interview {
             background-color: green;
         }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 10px;
+            margin-bottom: 3rem;
+            color: #630000;
+        }
     }
 
     .see-more {
         align-self: flex-end;
         margin-top: 10px;
-        padding: 5px 10px;
-        background-color: #4caf50;
+
+        padding: 2px 5px;
+        background-color: #000000;
         color: white;
         text-decoration: none;
         border-radius: 5px;

@@ -3,128 +3,127 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Login Page</title>
+        <title>Profile Page</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/ContentTools/1.6.10/content-tools.min.css"
+        />
+        <script
+            src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"
+            defer
+        ></script>
+        <script
+            type="module"
+            src="../javascript/modules/profile.js"
+            defer
+        ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ContentTools/1.6.10/content-tools.min.js"></script>
         <link rel="stylesheet" href="../dist/css/main-style.css" />
-        <script src="../javascript/modules/profile.js"></script>
     </head>
     <body>
         <header>
             <nav>
-                <div class="logo">LOGO</div>
-                <div class="ux_container">
+                <div class="logo">
+                    <img
+                        src="../assets/logo_withoutbg_red-removed.png"
+                        alt="Logo"
+                    />
+                </div>
+                <div class="nav-links">
                     <div class="dropdown">
-                        <div class="menusymbol">
-                            <span>userName</span>
-                            <button id="dropbtn">
+                        <div class="dropdown-button">
+                            <span class="username" id="currentUsername"
+                                >userName</span
+                            >
+                            <div id="dropbtn">
                                 <img
                                     src="../assets/menuCircle.svg"
-                                    alt="circlesvg"
+                                    alt="Menu Icon"
                                 />
+                            </div>
+                        </div>
+                        <div class="dropdown-content" id="dropdownContent">
+                            <a href="../pages/dashboard.html">Dashboard</a>
+                            <a href="../pages/profile.html">Profile</a>
+                            <a href="../pages/createJob.html">Add Job</a>
+                            <hr />
+                            <button id="logoutButton" class="logout-button">
+                                Logout
                             </button>
                         </div>
-
-                        <div class="dropdown-content" id="myDropdown">
-                            <a href="../pages/dashboard.html">DashBoard</a>
-                            <a href="../pages/profile.html">My Profil</a>
-                            <a href="../pages/create-job.html">Add job</a>
-                            <hr />
-                            <button id="logoutButton">Logout</button>
-                        </div>
                     </div>
-
-                    <a href="../pages/login.html">My Profil</a>
+                    <a href="../pages/profile.html">Profile</a>
                 </div>
             </nav>
         </header>
+        <div id="particles-js"></div>
         <main class="profil_main">
-            <div
-                id="particles-js"
-                style="position: absolute; width: 100%; height: 100%"
-            >
-                <div class="profil_container">
-                    <h1 class="profil_title">
-                        My Profile<span
-                            class="loader hidden"
-                            id="loader"
-                        ></span>
-                    </h1>
-                    <div class="profil_profile-container">
-                        <div class="profil_profile-picture">
-                            <img
-                                id="profil_profilePicture"
-                                src="../assets/profil.jpg"
-                                alt="Profile Picture"
-                            />
+            <div class="profil_container">
+                <h1 class="profil_title">
+                    My Profile<span class="loader hidden" id="loader"></span>
+                </h1>
+                <div class="profil_profile-container">
+                    <div class="profil_profile-picture">
+                        <img
+                            id="profil_profilePicture"
+                            src="../assets/profil.jpg"
+                            alt="Profile Picture"
+                        />
+                    </div>
+                    <div id="profil_profileForm">
+                        <div class="profil_form-group">
+                            <label for="profil_firstname">First Name</label>
+                            <p
+                                id="profil_firstname"
+                                data-editable
+                                data-name="firstname"
+                            >
+                                John
+                            </p>
                         </div>
-                        <form id="profil_profileForm">
-                            <div class="profil_form-group">
-                                <label for="profil_firstname">First Name</label>
-                                <input
-                                    type="text"
-                                    id="profil_firstname"
-                                    name="firstname"
-                                    value="John"
-                                    readonly
-                                />
-                            </div>
-                            <div class="profil_form-group">
-                                <label for="profil_lastname">Last Name</label>
-                                <input
-                                    type="text"
-                                    id="profil_lastname"
-                                    name="lastname"
-                                    value="Doe"
-                                    readonly
-                                />
-                            </div>
-                            <div class="profil_form-group">
-                                <label for="profil_email">Email</label>
-                                <input
-                                    type="email"
-                                    id="profil_email"
-                                    name="email"
-                                    value="john.doe@example.com"
-                                    readonly
-                                />
-                            </div>
-                            <div class="profil_form-group">
-                                <label for="profil_github">GitHub</label>
-                                <input
-                                    type="url"
-                                    id="profil_github"
-                                    name="github"
-                                    value="https://github.com/johndoe"
-                                    readonly
-                                />
-                            </div>
-                            <div class="profil_form-group">
-                                <label for="profil_cv">CV</label>
-                                <input
-                                    type="url"
-                                    id="profil_cv"
-                                    name="cv"
-                                    value="https://example.com/cv/johndoe"
-                                    readonly
-                                />
-                            </div>
-                            <button
-                                type="button"
-                                id="profil_editButton"
-                                class="profil_button"
-                                onclick="enableEdit()"
+                        <div class="profil_form-group">
+                            <label for="profil_lastname">Last Name</label>
+                            <p
+                                id="profil_lastname"
+                                data-editable
+                                data-name="lastname"
                             >
-                                Edit
-                            </button>
-                            <button
-                                type="button"
-                                id="profil_saveButton"
-                                class="profil_button profil_save-button"
-                                onclick="saveChanges()"
-                                style="display: none"
+                                Doe
+                            </p>
+                        </div>
+                        <div class="profil_form-group">
+                            <label for="profil_email">Email</label>
+                            <p
+                                id="profil_email"
+                                data-editable
+                                data-name="email"
                             >
-                                Save
-                            </button>
-                        </form>
+                                john.doe@example.com
+                            </p>
+                        </div>
+                        <div class="profil_form-group">
+                            <label for="profil_github">GitHub</label>
+                            <p
+                                id="profil_github"
+                                data-editable
+                                data-name="github"
+                            >
+                                https://github.com/johndoe
+                            </p>
+                        </div>
+                        <div class="profil_form-group">
+                            <label for="profil_cv">CV</label>
+                            <p id="profil_cv" data-editable data-name="cv">
+                                https://example.com/cv/johndoe
+                            </p>
+                        </div>
+                        <button
+                            type="button"
+                            id="profil_saveButton"
+                            class="profil_button profil_save-button"
+                        >
+                            Save
+                        </button>
                     </div>
                 </div>
             </div>

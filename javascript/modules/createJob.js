@@ -40,6 +40,7 @@ jobForm.onsubmit = async (event) => {
     const payload = {
         body: {
             title: formData.get('jobTitle'),
+            company: formData.get('jobCompany'),
             website: formData.get('website'),
             contact: {
                 name: formData.get('employerName'),

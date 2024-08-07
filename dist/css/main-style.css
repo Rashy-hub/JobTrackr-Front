@@ -240,10 +240,40 @@ main {
   align-items: center;
 }
 
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -2;
+}
+
+.profil_main {
+  font-family: "Playfair Display", serif;
+  position: relative;
+  z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px;
+}
+
 .profil_container {
   background-color: white;
   padding: 20px;
-  width: 300px;
+  width: 600px;
+  margin: 0 auto;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 }
 
 .profil_title {
@@ -265,8 +295,8 @@ main {
 }
 
 .profil_profile-picture img {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   margin-bottom: 20px;
 }
@@ -277,6 +307,7 @@ main {
 
 .profil_form-group {
   margin-bottom: 15px;
+  text-align: center;
 }
 
 .profil_form-group label {
@@ -285,18 +316,18 @@ main {
   font-weight: bold;
 }
 
-.profil_form-group input[type=text],
-.profil_form-group input[type=email],
-.profil_form-group input[type=url] {
+.profil_form-group p {
   width: calc(100% - 20px);
   padding: 8px 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: #f9f9f9;
+  margin: 0 auto;
+  cursor: text;
 }
 
-.profil_form-group input[readonly] {
-  background-color: #e9ecef;
+.profil_form-group p[data-editable] {
+  outline: none;
 }
 
 .profil_button {
@@ -318,6 +349,28 @@ main {
 .profil_button:disabled {
   background-color: #6c757d;
   cursor: not-allowed;
+}
+
+/* Votre CSS ici */
+.ct-editing-toolbar {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.ct-editing-toolbar .ct-edit-button {
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+.ct-editing-toolbar .ct-edit-button:hover {
+  background-color: #0056b3;
 }
 
 /* @import '_variables.scss';
@@ -531,7 +584,9 @@ main {
   padding: 20px;
 }
 
-.add-job-button {
+.add-job-button,
+.clearall-job-button,
+.populate-job-button {
   margin-left: 20px;
   padding: 10px 20px;
   background-color: #4caf50;
@@ -543,8 +598,18 @@ main {
   -webkit-transition: background-color 0.3s;
   transition: background-color 0.3s;
 }
-.add-job-button:hover {
+.add-job-button:hover,
+.clearall-job-button:hover,
+.populate-job-button:hover {
   background-color: #388e3c;
+}
+
+.clearall-job-button {
+  background-color: orange;
+  color: black;
+}
+.clearall-job-button:hover {
+  background-color: #ff6347;
 }
 
 .controls {
@@ -591,19 +656,24 @@ main {
       justify-content: space-around;
   margin: 20px auto;
   width: 100%;
-  max-width: 1200px;
-  padding: 10px;
-  background-color: #f0f0f0;
+  max-width: 1400px;
+  padding: 2rem;
+  background: url("/assets/rustic-wooden-background.jpg") no-repeat center center;
+  background-size: cover; /* This will ensure the image covers the entire area */
+  -webkit-box-shadow: inset 1px 1px 3px #ffffff, inset -1px -1px 3px #a0a0a0, 2px 2px 6px rgba(0, 0, 0, 0.2);
+          box-shadow: inset 1px 1px 3px #ffffff, inset -1px -1px 3px #a0a0a0, 2px 2px 6px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
 }
 
 .job-card {
-  background-color: #fff;
+  position: relative;
+  background-color: #ffe4e4;
   border: 1px solid #ddd;
   border-radius: 8px;
   -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 10px;
+  cursor: pointer;
   width: 300px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -619,7 +689,9 @@ main {
           box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 .job-card .job-card-content {
-  padding: 15px;
+  padding: 10px;
+  padding-bottom: 0px;
+  padding-right: 0px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -631,27 +703,14 @@ main {
       -ms-flex-positive: 1;
           flex-grow: 1;
 }
-.job-card .job-card-content h2 {
-  font-size: 1.5em;
-  font-weight: bold;
-  margin-bottom: 10px;
-  color: #333;
-}
-.job-card .job-card-content .job-details {
-  font-size: 1em;
-  margin-bottom: 5px;
-}
-.job-card .job-card-content .job-details.title {
-  font-weight: bold;
-  color: #4caf50;
-}
-.job-card .job-card-content .job-details.contact-name, .job-card .job-card-content .job-details.contact-email, .job-card .job-card-content .job-details.contact-phone, .job-card .job-card-content .job-details.contact-address {
-  color: #555;
-}
 .job-card .job-card-content .job-status {
-  margin-top: auto;
-  font-size: 0.9em;
-  color: #fff;
+  font-family: "Playfair Display", serif;
+  position: absolute;
+  right: 0;
+  top: -5px;
+  font-size: 1rem;
+  font-weight: 900;
+  color: #ffffff;
   padding: 5px 10px;
   border-radius: 5px;
   text-align: center;
@@ -668,12 +727,28 @@ main {
 .job-card .job-card-content .status-interview {
   background-color: green;
 }
+.job-card .job-card-content h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #333;
+}
+.job-card .job-card-content h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 3rem;
+  color: #630000;
+}
 .job-card .see-more {
   -ms-flex-item-align: end;
       align-self: flex-end;
   margin-top: 10px;
-  padding: 5px 10px;
-  background-color: #4caf50;
+  padding: 2px 5px;
+  background-color: #000000;
   color: white;
   text-decoration: none;
   border-radius: 5px;

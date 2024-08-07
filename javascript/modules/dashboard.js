@@ -1,4 +1,7 @@
-import { setupDropdownVisibility } from '../libs/modalHandler.js'
+import {
+    infoDialogHandler,
+    setupDropdownVisibility,
+} from '../libs/modalHandler.js'
 import { initParticles } from '../libs/particle-style.js'
 import { fetchData, getDynamicUrl } from '../libs/apiHandlers.js'
 
@@ -20,28 +23,27 @@ async function initDashboard() {
         const jobListElement = document.getElementById('job-list')
         jobListElement.innerHTML = jobs
             .map((job) => {
+                const formattedDate = new Date(
+                    job.createdAt
+                ).toLocaleDateString()
+
                 const statusClass = job.userExtraInfo.status
+
                     .toLowerCase()
                     .replace(/ /g, '-')
                 return `
                     <div class="job-card ${statusClass}" data-date="${new Date(
                     job.createdAt
-                ).getTime()}">
+                ).getTime()}" data-id="${job._id}">
                         <div class="job-card-content">
+                        <p class="job-status status-${statusClass}">${statusClass}</p>
                             <h2 class="title">${job.title}</h2>
-                            <p class="job-details contact-name">Contact Name: ${
-                                job.contact.name
-                            }</p>
-                            <p class="job-details contact-email">Contact Email: ${
-                                job.contact.email
-                            }</p>
-                            <p class="job-details contact-phone">Contact Phone: ${
-                                job.contact.phone
-                            }</p>
-                            <p class="job-details contact-address">Contact Address: ${
-                                job.contact.address
-                            }</p>
-                            <p class="job-status status-${statusClass}">${statusClass}</p>
+
+                            <h3 class="job-details contact-name"> ${
+                                job.company
+                            }</h3>
+                       
+                            
                             <a href="jobDetails.html?id=${
                                 job._id
                             }" class="see-more">See More</a>
@@ -106,9 +108,50 @@ logoutButton.addEventListener('click', (event) => {
 
     window.location.href = '/pages/login.html'
 })
+function getAllJobIds() {
+    // Select all elements with the class 'job-card' and a 'data-id' attribute
+    const jobCards = document.querySelectorAll('.job-card[data-id]')
 
+    // Extract the data-id values from each element and return them in an array
+    const jobIds = Array.from(jobCards).map((jobCard) =>
+        jobCard.getAttribute('data-id')
+    )
+
+    return jobIds
+}
+function initClearButton() {
+    document
+        .querySelector('.clearall-job-button')
+        .addEventListener('click', (event) => {
+            event.preventDefault()
+
+            getAllJobIds().forEach(async (jobid) => {
+                const requestURL = getDynamicUrl('DELETE_JOB', { id: jobid })
+                console.log('going to delete that job with id ' + jobid)
+                const result = await fetchData(requestURL)
+                console.log(result)
+            })
+
+            window.location.href = '../pages/dashboard.html'
+        })
+}
+function initPopulateButton() {
+    document
+        .querySelector('.populate-job-button')
+        .addEventListener('click', async (event) => {
+            event.preventDefault()
+            // Afficher une boîte de confirmation
+
+            const requestURL = getDynamicUrl('POPULATE_JOBS')
+            const result = await fetchData(requestURL)
+            console.log(result)
+            window.location.href = '../pages/dashboard.html'
+        })
+}
 window.addEventListener('load', () => {
     initParticles()
     setupDropdownVisibility()
     initDashboard()
+    initClearButton()
+    initPopulateButton()
 })

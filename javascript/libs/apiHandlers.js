@@ -29,6 +29,34 @@ export const API_CONFIG = {
         withBearer: true,
         hasFiles: false,
     },
+    DELETE_JOB: {
+        method: 'DELETE',
+        endpoint: '/jobs/:id',
+        payload: {},
+        withBearer: true,
+        hasFiles: false,
+    },
+    POPULATE_JOBS: {
+        method: 'GET',
+        endpoint: '/jobs/populate',
+        payload: {},
+        withBearer: true,
+        hasFiles: false,
+    },
+    GET_PROFIL: {
+        method: 'PUT',
+        endpoint: '/profile',
+        payload: {},
+        withBearer: true,
+        hasFiles: false,
+    },
+    UPDATE_PROFIL: {
+        method: 'PUT',
+        endpoint: '/profile',
+        payload: { body: {}, files: {} },
+        withBearer: true,
+        hasFiles: true,
+    },
 }
 
 // Function to show or hide the loader
@@ -57,8 +85,12 @@ export function getDynamicUrl(action, payload = {}) {
     const actionConfig = API_CONFIG[action]
     const payloadConfig = { ...actionConfig.payload, ...payload }
 
-    // Construct URL with query parameters
+    // Construct URL with query parameters and replace placeholders
     let url = new URL(`${baseUrl}${actionConfig.endpoint}`)
+    for (const [key, value] of Object.entries(payloadConfig)) {
+        url.pathname = url.pathname.replace(`:${key}`, value)
+    }
+
     let method = actionConfig.method
     let withAuth = actionConfig.withBearer
     let hasFiles = actionConfig.hasFiles
@@ -71,7 +103,6 @@ export function getDynamicUrl(action, payload = {}) {
         hasFiles: hasFiles,
     }
 }
-
 export async function fetchData(requestURL) {
     const token = localStorage.getItem('token')
     // Show loader

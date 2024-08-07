@@ -1,9 +1,29 @@
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -2;
+}
+
+.profil_main {
+    font-family: 'Playfair Display', serif;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
 .profil_container {
     background-color: white;
     padding: 20px;
-    //border-radius: 8px;
-    //box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 600px;
+    margin: 0 auto; // Centrer le conteneur
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); // Effet d'ombre optionnel
+    border-radius: 8px; // Coins arrondis optionnels
 }
 
 .profil_title {
@@ -18,8 +38,8 @@
 }
 
 .profil_profile-picture img {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     margin-bottom: 20px;
 }
@@ -30,6 +50,7 @@
 
 .profil_form-group {
     margin-bottom: 15px;
+    text-align: center; // Centrer le texte
 }
 
 .profil_form-group label {
@@ -38,18 +59,18 @@
     font-weight: bold;
 }
 
-.profil_form-group input[type='text'],
-.profil_form-group input[type='email'],
-.profil_form-group input[type='url'] {
+.profil_form-group p {
     width: calc(100% - 20px);
     padding: 8px 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: #f9f9f9;
+    margin: 0 auto; // Centrer les paragraphes
+    cursor: text; // Curseur texte au survol
 }
 
-.profil_form-group input[readonly] {
-    background-color: #e9ecef;
+.profil_form-group p[data-editable] {
+    outline: none; // Supprimer le contour quand éditable
 }
 
 .profil_button {
@@ -71,4 +92,26 @@
 .profil_button:disabled {
     background-color: #6c757d;
     cursor: not-allowed;
+}
+
+/* Votre CSS ici */
+.ct-editing-toolbar {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.ct-editing-toolbar .ct-edit-button {
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+
+.ct-editing-toolbar .ct-edit-button:hover {
+    background-color: #0056b3;
 }
