@@ -1,0 +1,97 @@
+@use 'base';
+
+// Particles CSS
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -2; /* Ensure particles are in the background */
+}
+
+// Job details page main styling
+.job-details_main {
+    font-family: 'Playfair Display', serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+// Container for job details
+.job-details_container {
+    font-family: 'Playfair Display', serif;
+    background: rgba(
+        255,
+        255,
+        255,
+        0.9
+    ); /* Semi-transparent white background */
+    backdrop-filter: blur(5px); /* Apply a more noticeable blur effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow effect */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Light border */
+    border-radius: 1.5rem; /* Slightly rounded corners */
+    padding: 20px;
+    width: 80%; /* Responsive width */
+    max-width: 800px; /* Max width for larger screens */
+    margin: 20px auto; /* Center the container with some margin */
+}
+
+// Job details paragraphs
+.job-details_paragraphe {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; /* Standard font size */
+    color: #333; /* Dark text color for readability */
+    margin-bottom: 15px; /* Space between paragraphs */
+    line-height: 1.6; /* Improve readability with increased line-height */
+}
+
+// Button for clearing job details
+.clear-job-button {
+    font-family: 'Playfair Display', serif;
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    background-color: #dc3545; /* Red background for the clear button */
+    text-align: center;
+    text-decoration: none;
+    font-size: 1rem; /* Standard font size */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition for hover effects */
+}
+.edit-job-button {
+    font-family: 'Playfair Display', serif;
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    background-color: #055b05; /* Red background for the clear button */
+    text-align: center;
+    text-decoration: none;
+    font-size: 1rem; /* Standard font size */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition for hover effects */
+}
+// Hover effect for clear button
+.clear-job-button:hover {
+    background-color: #c82333; /* Darker red on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+// Hover effect for clear button
+.edit-job-button:hover {
+    background-color: #4f9f19; /* Darker red on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+// Job details title
+.job-details_title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; /* Larger font size for the title */
+    font-weight: bold;
+    margin-bottom: 20px; /* Space below the title */
+    color: #333; /* Dark text color */
+}

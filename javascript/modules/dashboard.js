@@ -97,6 +97,7 @@ if (!token && !userId && !userName) {
 }
 
 userNameSpan.textContent =
+    'Welcome ' +
     userName.split(' ').pop().charAt(0).toUpperCase() +
     userName.split(' ').pop().slice(1).toLowerCase()
 

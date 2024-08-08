@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Editable Form</title>
+        <script src="https://cdn.jsdelivr.net/npm/editablejs@latest/dist/editable.min.js"></script>
+    </head>
+    <body>
+        <div id="profile">
+            <p data-editable>Click to edit this text</p>
+        </div>
+        <button id="edit">Edit</button>
+        <button id="save">Save</button>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var editButton = document.getElementById('edit')
+                var saveButton = document.getElementById('save')
+
+                editButton.addEventListener('click', function () {
+                    document
+                        .querySelectorAll('[data-editable]')
+                        .forEach(function (el) {
+                            el.setAttribute('contenteditable', true)
+                            el.focus()
+                        })
+                })
+
+                saveButton.addEventListener('click', function () {
+                    document
+                        .querySelectorAll('[data-editable]')
+                        .forEach(function (el) {
+                            el.setAttribute('contenteditable', false)
+                            // Save the content to the server or perform other actions here
+                            console.log(el.innerText) // Example: log the edited text
+                        })
+                })
+            })
+        </script>
+    </body>
+</html>

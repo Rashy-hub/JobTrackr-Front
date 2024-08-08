@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Job Details</title>
+
+        <script
+            src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"
+            defer
+        ></script>
+        <script
+            type="module"
+            src="../javascript/modules/jobdetails.js"
+            defer
+        ></script>
+        <link rel="stylesheet" href="../dist/css/main-style.css" />
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div class="logo">
+                    <img
+                        src="../assets/logo_withoutbg_red-removed.png"
+                        alt="Logo"
+                    />
+                </div>
+                <div class="nav-links">
+                    <div class="dropdown">
+                        <div class="dropdown-button">
+                            <span class="username" id="currentUsername"
+                                >userName</span
+                            >
+                            <div id="dropbtn">
+                                <img
+                                    src="../assets/menuCircle.svg"
+                                    alt="Menu Icon"
+                                />
+                            </div>
+                        </div>
+                        <div class="dropdown-content" id="dropdownContent">
+                            <a href="../pages/dashboard.html">Dashboard</a>
+                            <a href="../pages/profile.html">Profile</a>
+                            <a href="../pages/createJob.html">Add Job</a>
+                            <hr />
+                            <button id="logoutButton" class="logout-button">
+                                Logout
+                            </button>
+                        </div>
+                    </div>
+                    <a href="../pages/profile.html">Profile</a>
+                </div>
+            </nav>
+        </header>
+        <div id="particles-js"></div>
+
+        <main class="job-details_main">
+            <h1>Job Details<span class="loader hidden" id="loader"></span></h1>
+            <div id="job-details_container" class="job-details_container">
+                <!-- Job details will be dynamically inserted here -->
+            </div>
+            <a href="../pages/dashboard.html">back to dashboard</a>
+        </main>
+    </body>
+</html>

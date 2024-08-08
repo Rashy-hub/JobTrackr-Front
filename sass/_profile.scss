@@ -1,56 +1,77 @@
+/* Ensure particles.js is correctly positioned behind other elements */
 #particles-js {
     position: fixed;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-    z-index: -2;
+    z-index: -1; /* Ensure particles are in the background */
+    pointer-events: none; /* Ensure other elements don't block mouse events */
 }
 
+/* Profile page main styling */
 .profil_main {
     font-family: 'Playfair Display', serif;
-    position: relative;
-    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
 }
 
+/* Container for profile information */
 .profil_container {
-    background-color: white;
+    background: rgba(255, 255, 255, 0); /* Semi-transparent white background */
+    backdrop-filter: blur(
+        2px
+    ); /* Apply a blur effect to the area behind the container */
+    box-shadow: inset 1px 1px 3px #ffffff, inset -1px -1px 3px #a0a0a0,
+        2px 2px 6px rgba(0, 0, 0, 0.2);
+    /* Optional: add a border or additional styling */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+
+    border-radius: 2rem;
+
     padding: 20px;
-    width: 600px;
-    margin: 0 auto; // Centrer le conteneur
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); // Effet d'ombre optionnel
-    border-radius: 8px; // Coins arrondis optionnels
+    width: 600px; /* Adjust width as needed */
+    margin: 0 auto; /* Center the container */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional shadow effect */
 }
 
+/* Title styling */
 .profil_title {
     text-align: center;
+    font-size: 2rem; /* Adjust font size as needed */
     margin-bottom: 20px;
 }
 
+/* Container for profile picture and form elements */
 .profil_profile-container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.profil_profile-picture img {
+/* Profile picture styling */
+.profil_profile-picture {
     width: 200px;
     height: 200px;
-    border-radius: 50%;
+    cursor: pointer;
+    margin: auto;
     margin-bottom: 20px;
 }
+.profil_profile-picture img {
+    border-radius: 50%;
+}
 
+/* Form styling */
 #profil_profileForm {
     width: 100%;
 }
 
+/* Form group styling */
 .profil_form-group {
     margin-bottom: 15px;
-    text-align: center; // Centrer le texte
+    text-align: center; /* Center the text */
 }
 
 .profil_form-group label {
@@ -59,59 +80,69 @@
     font-weight: bold;
 }
 
+.profil_form-group input {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: bolder;
+    width: calc(100% - 20px); /* Full width minus padding */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+/* Styling for editable paragraphs (if used) */
 .profil_form-group p {
     width: calc(100% - 20px);
     padding: 8px 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: #f9f9f9;
-    margin: 0 auto; // Centrer les paragraphes
-    cursor: text; // Curseur texte au survol
+    margin: 0 auto; /* Center paragraphs */
+    cursor: text; /* Text cursor on hover */
 }
 
 .profil_form-group p[data-editable] {
-    outline: none; // Supprimer le contour quand éditable
+    outline: none; /* Remove outline when editable */
 }
 
+/* Button styling */
 .profil_button {
-    width: 100%;
+    width: 20%;
     padding: 10px;
+
     border: none;
     border-radius: 4px;
     color: white;
     background-color: #007bff;
     cursor: pointer;
     font-size: 16px;
-    margin-bottom: 10px;
+
+    transition: background-color 0.3s, transform 0.2s;
 }
 
+.profil_button-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    width: 50%;
+    margin: auto;
+}
 .profil_save-button {
+    width: 100px;
     background-color: #28a745;
 }
-
+.profil_edit-button {
+    width: 100px;
+}
 .profil_button:disabled {
     background-color: #6c757d;
     cursor: not-allowed;
 }
 
-/* Votre CSS ici */
-.ct-editing-toolbar {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-}
-
-.ct-editing-toolbar .ct-edit-button {
-    background-color: #007bff;
-    color: white;
-    border-radius: 4px;
-    padding: 10px;
-    font-size: 14px;
-    border: none;
-    cursor: pointer;
-}
-
-.ct-editing-toolbar .ct-edit-button:hover {
+/* Hover effect for buttons */
+.profil_button:hover:not(:disabled) {
     background-color: #0056b3;
+    transform: translateY(-2px);
 }

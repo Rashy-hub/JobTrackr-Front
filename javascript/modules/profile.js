@@ -1,27 +1,27 @@
 // profile.js
 
-console.log('profile.js entry point')
-import {
-    infoDialogHandler,
-    setupDropdownVisibility,
-} from '../libs/modalHandler.js'
-import { initParticles } from '../libs/particle-style.js'
 import { fetchData, getDynamicUrl } from '../libs/apiHandlers.js'
+import { setupDropdownVisibility } from '../libs/modalHandler.js'
+import { initParticles } from '../libs/particle-style.js'
+
+console.log('profile.js entry point')
 
 const userNameSpan = document.getElementById('currentUsername')
 const token = localStorage.getItem('token')
 const userId = localStorage.getItem('userID')
 const userName = localStorage.getItem('username')
+
 if (!token && !userId && !userName) {
     window.location.href = '/pages/login.html'
 }
 
 userNameSpan.textContent =
+    'Welcome ' +
     userName.split(' ').pop().charAt(0).toUpperCase() +
     userName.split(' ').pop().slice(1).toLowerCase()
 
 const logoutButton = document.getElementById('logoutButton')
-logoutButton.addEventListener('click', (event) => {
+logoutButton.addEventListener('click', () => {
     localStorage.clear('token')
     localStorage.clear('userID')
     localStorage.clear('username')
@@ -29,12 +29,12 @@ logoutButton.addEventListener('click', (event) => {
     window.location.href = '/pages/login.html'
 })
 
-window.addEventListener('load', function () {
+window.addEventListener('load', () => {
     initParticles()
     setupDropdownVisibility()
     getProfilAndLoadDom()
-    saveHandler()
-    ContentTools.EditorApp.get().init('*[data-editable]')
+    setupForm()
+    setupFileUploads()
 })
 
 async function getProfilAndLoadDom() {
@@ -44,69 +44,112 @@ async function getProfilAndLoadDom() {
     console.log(result)
 
     if (result) {
-        document.getElementById('profil_firstname').innerText =
+        document.getElementById('profil_firstname').value =
             result.firstname || ''
-        document.getElementById('profil_lastname').innerText =
-            result.lastname || ''
-        document.getElementById('profil_email').innerText = result.email || ''
-        document.getElementById('profil_github').innerText = result.github || ''
-        document.getElementById('profil_cv').innerText = result.cv || ''
+        document.getElementById('profil_lastname').value = result.lastname || ''
+        document.getElementById('profil_email').value = result.email || ''
+        document.getElementById('profil_github').value = result.github || ''
 
         const profilePictureElement = document.getElementById(
             'profil_profilePicture'
         )
         console.log(profilePictureElement)
-        if (result.profilePicture.url) {
+        if (result.profilePicture && result.profilePicture.url) {
             profilePictureElement.src = result.profilePicture.url
         } else {
-            profilePictureElement.src = '../assets/profil.jpg' // Default profile picture
+            profilePictureElement.src = '../assets/emptyavatar.jpg' // Default profile picture
+        }
+
+        const cvLinkElement = document.getElementById('cvLink')
+        if (result.cv && result.cv.url) {
+            cvLinkElement.href = result.cv.url
+            cvLinkElement.style.display = 'block'
+        } else {
+            cvLinkElement.style.display = 'none'
         }
     }
 }
 
-function saveHandler() {
-    document
-        .getElementById('profil_saveButton')
-        .addEventListener('click', () => saveChanges())
+function setupForm() {
+    const editButton = document.getElementById('profil_editButton')
+    const saveButton = document.getElementById('profil_saveButton')
+    const formFields = document.querySelectorAll('#profil_profileForm input')
+
+    editButton.addEventListener('click', () => {
+        formFields.forEach((field) => (field.disabled = false))
+        saveButton.disabled = false
+    })
+
+    const form = document.getElementById('profil_profileForm')
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault()
+        if (!document.getElementById('profil_github').checkValidity()) {
+            alert('Please enter a valid GitHub URL.')
+            return
+        }
+        await saveChanges()
+        formFields.forEach((field) => (field.disabled = true))
+        saveButton.disabled = true
+    })
 }
 
 async function saveChanges() {
-    const editor = ContentTools.EditorApp.get()
-    const regions = editor.regions()
+    const form = document.getElementById('profil_profileForm')
+    const formData = new FormData(form)
 
-    const data = {}
-    for (let name in regions) {
-        if (regions.hasOwnProperty(name)) {
-            data[name] = regions[name].html()
-        }
-    }
-
-    // Récupérer les données des éléments éditables
-    const firstname = document.getElementById('profil_firstname').innerText
-    const lastname = document.getElementById('profil_lastname').innerText
-    const email = document.getElementById('profil_email').innerText
-    const github = document.getElementById('profil_github').innerText
-    const cv = document.getElementById('profil_cv').innerText
-
-    // Construire le payload
+    // Construct payload for the API
     const payload = {
         body: {
-            firstname: firstname,
-            lastname: lastname,
-            email: email,
-            github: github,
-            password: '', // Si nécessaire, à récupérer ou ajouter autrement
-            confirmPassword: '', // Si nécessaire, à récupérer ou ajouter autrement
+            firstname: formData.get('firstname'),
+            lastname: formData.get('lastname'),
+            email: formData.get('email'),
+            github: formData.get('github'),
         },
         files: {
-            profilePicture: null, // Récupération à implémenter si nécessaire
-            cv: cv || null,
+            profilePicture: formData.get('profilePicture') || null,
+            cv: formData.get('cv') || null,
         },
     }
+    console.log('Payload : ' + JSON.stringify(payload, null, 2))
 
-    // Get the request URL configuration
-    const requestURL = getDynamicUrl('REGISTER_USER', payload)
+    const requestURL = getDynamicUrl('UPDATE_PROFIL', payload)
 
-    // Fetch data and handle response
     const userdata = await fetchData(requestURL)
+
+    if (userdata) {
+        console.log('Profile updated successfully:')
+        window.location.href = '/pages/profile.html'
+    } else {
+        console.log('Error updating profile')
+    }
+}
+
+function setupFileUploads() {
+    const profilePicture = document.getElementById('profil_profilePicture')
+    const profilePictureUpload = document.getElementById('profilePictureUpload')
+    profilePicture.addEventListener('click', () => {
+        profilePictureUpload.click()
+    })
+
+    profilePictureUpload.addEventListener('change', (event) => {
+        const file = event.target.files[0]
+        if (file) {
+            const reader = new FileReader()
+            reader.onload = function (e) {
+                profilePicture.src = e.target.result
+            }
+            reader.readAsDataURL(file)
+        }
+    })
+
+    const cvUpload = document.getElementById('cvUpload')
+    cvUpload.addEventListener('change', (event) => {
+        const file = event.target.files[0]
+        if (file) {
+            // Optionally display the file name or do any other required actions
+            const cvLinkElement = document.getElementById('cvLink')
+            cvLinkElement.href = URL.createObjectURL(file)
+            cvLinkElement.style.display = 'block'
+        }
+    })
 }

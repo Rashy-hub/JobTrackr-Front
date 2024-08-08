@@ -62,8 +62,7 @@ myForm.onsubmit = (event) => {
 
     fetchData(getDynamicUrl('LOGIN_USER', { body: filledFields }))
         .then((userdata) => {
-            const username =
-                userdata.user.firstname + ' ' + userdata.user.lastname
+            const username = userdata.user.firstname
             //in order to stay connected ?
             localStorage.setItem('token', userdata.token)
             localStorage.setItem('userID', userdata.user.id)

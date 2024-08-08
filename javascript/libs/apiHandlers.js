@@ -29,10 +29,24 @@ export const API_CONFIG = {
         withBearer: true,
         hasFiles: false,
     },
+    GET_JOB: {
+        method: 'GET',
+        endpoint: '/jobs/:id',
+        payload: {},
+        withBearer: true,
+        hasFiles: false,
+    },
     DELETE_JOB: {
         method: 'DELETE',
         endpoint: '/jobs/:id',
         payload: {},
+        withBearer: true,
+        hasFiles: false,
+    },
+    UPDATE_JOB: {
+        method: 'PUT',
+        endpoint: '/jobs/:id',
+        payload: { body: {} },
         withBearer: true,
         hasFiles: false,
     },
@@ -44,7 +58,7 @@ export const API_CONFIG = {
         hasFiles: false,
     },
     GET_PROFIL: {
-        method: 'PUT',
+        method: 'GET',
         endpoint: '/profile',
         payload: {},
         withBearer: true,
@@ -79,7 +93,7 @@ export function getDynamicUrl(action, payload = {}) {
         throw new Error(`Invalid action: ${action}`)
     }
 
-    const baseUrl = 'http://localhost:8080/api'
+    const baseUrl = 'https://jobtrackr-backend.onrender.com/api'
 
     // Get the config and the payload for the specified action
     const actionConfig = API_CONFIG[action]
@@ -119,7 +133,7 @@ export async function fetchData(requestURL) {
         options.headers['Authorization'] = `Bearer ${token}`
     }
 
-    if (requestURL.method === 'POST') {
+    if (requestURL.method === 'POST' || requestURL.method === 'PUT') {
         if (requestURL.hasFiles) {
             const formData = new FormData()
 
@@ -151,7 +165,15 @@ export async function fetchData(requestURL) {
             let errorMessage = `Error ${response.status}`
             try {
                 const errorResponse = await response.json()
-                errorMessage = errorResponse.message || errorMessage
+                let resultMessage = errorResponse.message
+                if (errorResponse.fieldErrors) {
+                    resultMessage =
+                        errorResponse.message +
+                        '\n' +
+                        JSON.stringify(errorResponse.fieldErrors, null, 2)
+                }
+
+                errorMessage = resultMessage || errorMessage
             } catch (jsonError) {
                 console.error('Error parsing JSON response', jsonError)
             }

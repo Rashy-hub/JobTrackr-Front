@@ -33,7 +33,7 @@ window.addEventListener('load', () => {
         // Fetch data and handle response
         const userdata = await fetchData(requestURL)
         if (userdata && userdata.user) {
-            const username = userdata.user.firstname + userdata.user.lastname
+            const username = userdata.user.firstname
             // In order to stay connected
             localStorage.setItem('token', userdata.token)
             localStorage.setItem('userID', userdata.user.id)

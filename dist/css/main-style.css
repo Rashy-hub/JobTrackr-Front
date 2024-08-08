@@ -240,19 +240,20 @@ main {
   align-items: center;
 }
 
+/* Ensure particles.js is correctly positioned behind other elements */
 #particles-js {
   position: fixed;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
-  z-index: -2;
+  z-index: -1; /* Ensure particles are in the background */
+  pointer-events: none; /* Ensure other elements don't block mouse events */
 }
 
+/* Profile page main styling */
 .profil_main {
   font-family: "Playfair Display", serif;
-  position: relative;
-  z-index: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -266,21 +267,31 @@ main {
   padding: 20px;
 }
 
+/* Container for profile information */
 .profil_container {
-  background-color: white;
+  background: rgba(255, 255, 255, 0); /* Semi-transparent white background */
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px); /* Apply a blur effect to the area behind the container */
+  -webkit-box-shadow: inset 1px 1px 3px #ffffff, inset -1px -1px 3px #a0a0a0, 2px 2px 6px rgba(0, 0, 0, 0.2);
+          box-shadow: inset 1px 1px 3px #ffffff, inset -1px -1px 3px #a0a0a0, 2px 2px 6px rgba(0, 0, 0, 0.2);
+  /* Optional: add a border or additional styling */
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 2rem;
   padding: 20px;
-  width: 600px;
-  margin: 0 auto;
+  width: 600px; /* Adjust width as needed */
+  margin: 0 auto; /* Center the container */
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional shadow effect */
 }
 
+/* Title styling */
 .profil_title {
   text-align: center;
+  font-size: 2rem; /* Adjust font size as needed */
   margin-bottom: 20px;
 }
 
+/* Container for profile picture and form elements */
 .profil_profile-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -294,20 +305,28 @@ main {
           align-items: center;
 }
 
-.profil_profile-picture img {
+/* Profile picture styling */
+.profil_profile-picture {
   width: 200px;
   height: 200px;
-  border-radius: 50%;
+  cursor: pointer;
+  margin: auto;
   margin-bottom: 20px;
 }
 
+.profil_profile-picture img {
+  border-radius: 50%;
+}
+
+/* Form styling */
 #profil_profileForm {
   width: 100%;
 }
 
+/* Form group styling */
 .profil_form-group {
   margin-bottom: 15px;
-  text-align: center;
+  text-align: center; /* Center the text */
 }
 
 .profil_form-group label {
@@ -316,22 +335,37 @@ main {
   font-weight: bold;
 }
 
+.profil_form-group input {
+  font-family: "Playfair Display", serif;
+  font-size: 24px;
+  font-weight: bolder;
+  width: calc(100% - 20px); /* Full width minus padding */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+/* Styling for editable paragraphs (if used) */
 .profil_form-group p {
   width: calc(100% - 20px);
   padding: 8px 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: #f9f9f9;
-  margin: 0 auto;
-  cursor: text;
+  margin: 0 auto; /* Center paragraphs */
+  cursor: text; /* Text cursor on hover */
 }
 
 .profil_form-group p[data-editable] {
-  outline: none;
+  outline: none; /* Remove outline when editable */
 }
 
+/* Button styling */
 .profil_button {
-  width: 100%;
+  width: 20%;
   padding: 10px;
   border: none;
   border-radius: 4px;
@@ -339,11 +373,31 @@ main {
   background-color: #007bff;
   cursor: pointer;
   font-size: 16px;
-  margin-bottom: 10px;
+  -webkit-transition: background-color 0.3s, -webkit-transform 0.2s;
+  transition: background-color 0.3s, -webkit-transform 0.2s;
+  transition: background-color 0.3s, transform 0.2s;
+  transition: background-color 0.3s, transform 0.2s, -webkit-transform 0.2s;
+}
+
+.profil_button-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 50%;
+  margin: auto;
 }
 
 .profil_save-button {
+  width: 100px;
   background-color: #28a745;
+}
+
+.profil_edit-button {
+  width: 100px;
 }
 
 .profil_button:disabled {
@@ -351,26 +405,11 @@ main {
   cursor: not-allowed;
 }
 
-/* Votre CSS ici */
-.ct-editing-toolbar {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-}
-
-.ct-editing-toolbar .ct-edit-button {
-  background-color: #007bff;
-  color: white;
-  border-radius: 4px;
-  padding: 10px;
-  font-size: 14px;
-  border: none;
-  cursor: pointer;
-}
-
-.ct-editing-toolbar .ct-edit-button:hover {
+/* Hover effect for buttons */
+.profil_button:hover:not(:disabled) {
   background-color: #0056b3;
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
 }
 
 /* @import '_variables.scss';
@@ -673,7 +712,6 @@ main {
   -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 10px;
-  cursor: pointer;
   width: 300px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -841,6 +879,118 @@ main {
   font-size: 1.5rem;
   margin-top: 20px;
   margin-bottom: 10px;
+}
+
+/* @import '_variables.scss';
+@import '_general.scss';
+@import '_register.scss';
+@import '_profile.scss';
+@import '_dashboard.scss';
+@import '_display-offer.scss';
+@import '_update-offer.scss';
+@import '_update-user.scss';
+ */
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -2; /* Ensure particles are in the background */
+}
+
+.job-details_main {
+  font-family: "Playfair Display", serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px;
+}
+
+.job-details_container {
+  font-family: "Playfair Display", serif;
+  background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px); /* Apply a more noticeable blur effect */
+  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow effect */
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Light border */
+  border-radius: 1.5rem; /* Slightly rounded corners */
+  padding: 20px;
+  width: 80%; /* Responsive width */
+  max-width: 800px; /* Max width for larger screens */
+  margin: 20px auto; /* Center the container with some margin */
+}
+
+.job-details_paragraphe {
+  font-family: "Playfair Display", serif;
+  font-size: 1rem; /* Standard font size */
+  color: #333; /* Dark text color for readability */
+  margin-bottom: 15px; /* Space between paragraphs */
+  line-height: 1.6; /* Improve readability with increased line-height */
+}
+
+.clear-job-button {
+  font-family: "Playfair Display", serif;
+  display: inline-block;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  background-color: #dc3545; /* Red background for the clear button */
+  text-align: center;
+  text-decoration: none;
+  font-size: 1rem; /* Standard font size */
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s, -webkit-transform 0.2s;
+  transition: background-color 0.3s, -webkit-transform 0.2s;
+  transition: background-color 0.3s, transform 0.2s;
+  transition: background-color 0.3s, transform 0.2s, -webkit-transform 0.2s; /* Smooth transition for hover effects */
+}
+
+.edit-job-button {
+  font-family: "Playfair Display", serif;
+  display: inline-block;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  background-color: #055b05; /* Red background for the clear button */
+  text-align: center;
+  text-decoration: none;
+  font-size: 1rem; /* Standard font size */
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s, -webkit-transform 0.2s;
+  transition: background-color 0.3s, -webkit-transform 0.2s;
+  transition: background-color 0.3s, transform 0.2s;
+  transition: background-color 0.3s, transform 0.2s, -webkit-transform 0.2s; /* Smooth transition for hover effects */
+}
+
+.clear-job-button:hover {
+  background-color: #c82333; /* Darker red on hover */
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px); /* Slight lift effect */
+}
+
+.edit-job-button:hover {
+  background-color: #4f9f19; /* Darker red on hover */
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px); /* Slight lift effect */
+}
+
+.job-details_title {
+  font-family: "Playfair Display", serif;
+  font-size: 2rem; /* Larger font size for the title */
+  font-weight: bold;
+  margin-bottom: 20px; /* Space below the title */
+  color: #333; /* Dark text color */
 }
 
 /* _info-modal.scss */
