@@ -126,19 +126,31 @@
                         </div>
                         <div class="edit-job_form-group">
                             <label for="edit-job_origin">Origin</label>
-                            <input
-                                type="text"
+                            <select
                                 id="edit-job_origin"
                                 name="origin"
-                            />
+                                class="create_select"
+                                required
+                            >
+                                <option value="candidature spontanée">
+                                    Candidature Spontanée
+                                </option>
+                                <option value="job offer">Job Offer</option>
+                            </select>
                         </div>
                         <div class="edit-job_form-group">
                             <label for="edit-job_status">Status</label>
-                            <input
-                                type="text"
+                            <select
                                 id="edit-job_status"
                                 name="status"
-                            />
+                                class="create_select"
+                                required
+                            >
+                                <option value="interested">Interested</option>
+                                <option value="cv sent">CV Sent</option>
+                                <option value="negative">Negative</option>
+                                <option value="interview">Interview</option>
+                            </select>
                         </div>
                         <div class="edit-job_form-group">
                             <label for="edit-job_comments">Comments</label>

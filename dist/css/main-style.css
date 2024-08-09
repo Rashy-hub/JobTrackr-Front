@@ -1019,7 +1019,7 @@ main {
 }
 
 .edit-job_container {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0);
   -webkit-backdrop-filter: blur(2px);
           backdrop-filter: blur(2px);
   -webkit-box-shadow: inset 1px 1px 3px #ffffff, inset -1px -1px 3px #a0a0a0, 2px 2px 6px rgba(0, 0, 0, 0.2);
@@ -1052,18 +1052,6 @@ main {
           align-items: center;
 }
 
-.edit-job_profile-picture {
-  width: 200px;
-  height: 200px;
-  cursor: pointer;
-  margin: auto;
-  margin-bottom: 20px;
-}
-
-.edit-job_profile-picture img {
-  border-radius: 50%;
-}
-
 #edit-job_profileForm {
   width: 100%;
 }
@@ -1079,7 +1067,9 @@ main {
   font-weight: bold;
 }
 
-.edit-job_form-group input {
+.edit-job_form-group input,
+.edit-job_form-group select,
+.edit-job_form-group textarea {
   font-family: "Playfair Display", serif;
   font-size: 24px;
   font-weight: bolder;

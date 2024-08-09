@@ -4,6 +4,28 @@ import { fetchData, getDynamicUrl } from '../libs/apiHandlers.js'
 
 console.log('editjob.js entry point')
 
+const userNameSpan = document.getElementById('currentUsername')
+const token = localStorage.getItem('token')
+const userId = localStorage.getItem('userID')
+const userName = localStorage.getItem('username')
+
+if (!token || !userId || !userName) {
+    window.location.href = '/pages/login.html'
+}
+
+userNameSpan.textContent =
+    'Welcome ' +
+    userName.split(' ').pop().charAt(0).toUpperCase() +
+    userName.split(' ').pop().slice(1).toLowerCase()
+
+const logoutButton = document.getElementById('logoutButton')
+logoutButton.addEventListener('click', (event) => {
+    localStorage.removeItem('token')
+    localStorage.removeItem('userID')
+    localStorage.removeItem('username')
+    window.location.href = '/pages/login.html'
+})
+
 function getJobId() {
     const urlParams = new URLSearchParams(window.location.search)
     return urlParams.get('id')
