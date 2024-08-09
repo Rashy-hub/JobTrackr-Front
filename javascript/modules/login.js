@@ -2,8 +2,8 @@ import { fetchData, getDynamicUrl } from '../libs/apiHandlers.js'
 import { initParticles } from '../libs/particle-style.js'
 
 window.addEventListener('load', () => {
+    prefillForm()
     if (!sessionStorage.getItem('pageLoaded')) {
-        prefillForm()
         console.log('login.js entry point')
         console.log('Window loaded for the first time.')
 
@@ -27,18 +27,11 @@ function getQueryParams() {
 
 // Pre-fill form fields with query parameters
 function prefillForm() {
-    const params = getQueryParams()
     const myemail = document.getElementById('login_email')
     const mypassword = document.getElementById('login_password')
 
-    myemail.value = ''
-    mypassword.password = ''
-    if (params.email) {
-        myemail.value = params.email
-    }
-    if (params.password) {
-        mypassword.password = params.password
-    }
+    myemail.value = 'john-doe@gmail.com'
+    mypassword.value = 'Test123+'
 }
 
 const myForm = document.forms[0]

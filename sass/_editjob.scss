@@ -1,0 +1,147 @@
+// Ensure particles.js is correctly positioned behind other elements
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1; // Ensure particles are in the background
+    pointer-events: none; // Ensure other elements don't block mouse events
+}
+
+// Edit Job page main styling
+.edit-job_main {
+    font-family: 'Playfair Display', serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+// Container for edit job form
+.edit-job_container {
+    background: rgba(255, 255, 255, 0.8); // Semi-transparent white background
+    backdrop-filter: blur(
+        2px
+    ); // Apply a blur effect to the area behind the container
+    box-shadow: inset 1px 1px 3px #ffffff, inset -1px -1px 3px #a0a0a0,
+        2px 2px 6px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 2rem;
+    padding: 20px;
+    width: 600px; // Adjust width as needed
+    margin: 0 auto; // Center the container
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); // Optional shadow effect
+}
+
+// Title styling
+.edit-job_title {
+    text-align: center;
+    font-size: 2rem; // Adjust font size as needed
+    margin-bottom: 20px;
+}
+
+// Container for profile picture and form elements
+.edit-job_profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+// Profile picture styling
+.edit-job_profile-picture {
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.edit-job_profile-picture img {
+    border-radius: 50%;
+}
+
+// Form styling
+#edit-job_profileForm {
+    width: 100%;
+}
+
+// Form group styling
+.edit-job_form-group {
+    margin-bottom: 15px;
+    text-align: center; // Center the text
+}
+
+.edit-job_form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.edit-job_form-group input {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: bolder;
+    width: calc(100% - 20px); // Full width minus padding
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    box-sizing: border-box; // Include padding and border in element's total width and height
+}
+
+// Styling for editable paragraphs (if used)
+.edit-job_form-group p {
+    width: calc(100% - 20px);
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    margin: 0 auto; // Center paragraphs
+    cursor: text; // Text cursor on hover
+}
+
+.edit-job_form-group p[data-editable] {
+    outline: none; // Remove outline when editable
+}
+
+// Button styling
+.edit-job_button {
+    width: 20%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    background-color: #007bff;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.edit-job_button-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    width: 50%;
+    margin: auto;
+}
+
+.edit-job_save-button {
+    width: 100px;
+    background-color: #28a745;
+}
+
+.edit-job_edit-button {
+    width: 100px;
+}
+
+.edit-job_button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+// Hover effect for buttons
+.edit-job_button:hover:not(:disabled) {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}

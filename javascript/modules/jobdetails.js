@@ -30,7 +30,7 @@ async function loadJobDetails() {
             <p class="job-details_paragraphe"><strong>Status:</strong> ${job.userExtraInfo.status}</p>
             <p class="job-details_paragraphe"><strong>Comments:</strong> ${job.userExtraInfo.comments}</p>
             <button class="clear-job-button">Delete Job</button>
-            <button class="edit-job-button">  <a href="updateJob.html?id=${job._id}" class="edit-job" style="color:white;text-decoration:none">Edit Job</a></button>
+            <button class="edit-job-button">  <a href="updateJob.html?id=${job._id}" class="edit-job" style="color:white;text-decoration:none;width:100%">Edit Job</a></button>
         `
     } else {
         console.error('Failed to load job data')

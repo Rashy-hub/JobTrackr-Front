@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Profile Page</title>
+        <title>Edit Job</title>
 
         <script
             src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"
@@ -11,7 +11,7 @@
         ></script>
         <script
             type="module"
-            src="../javascript/modules/profile.js"
+            src="../javascript/modules/editjob.js"
             defer
         ></script>
         <link rel="stylesheet" href="../dist/css/main-style.css" />
@@ -53,98 +53,105 @@
             </nav>
         </header>
         <div id="particles-js"></div>
-        <main class="profil_main">
-            <div class="profil_container">
-                <h1 class="profil_title">
-                    My Profile<span class="loader hidden" id="loader"></span>
+        <main class="edit-job_main">
+            <div class="edit-job_container">
+                <h1 class="edit-job_title">
+                    Edit Job<span class="loader hidden" id="loader"></span>
                 </h1>
-                <div class="profil_profile-container">
-                    <form
-                        id="profil_profileForm"
-                        enctype="multipart/form-data"
-                        method="PUT"
-                    >
-                        <div class="profil_profile-picture">
-                            <img
-                                id="profil_profilePicture"
-                                src="../assets/emptyavatar.jpg"
-                                alt="Profile Picture"
-                            />
-                            <input
-                                type="file"
-                                id="profilePictureUpload"
-                                name="profilePicture"
-                                accept="image/png, image/jpeg, image/jpg"
-                                style="display: none"
-                            />
-                        </div>
-                        <div class="profil_form-group">
-                            <label for="profil_firstname">First Name</label>
+                <div class="edit-job_profile-container">
+                    <form id="edit-job_profileForm">
+                        <div class="edit-job_form-group">
+                            <label for="edit-job_title">Job Title</label>
                             <input
                                 type="text"
-                                id="profil_firstname"
-                                name="firstname"
-                                disabled
+                                id="edit-job_title"
+                                name="title"
                             />
                         </div>
-                        <div class="profil_form-group">
-                            <label for="profil_lastname">Last Name</label>
+                        <div class="edit-job_form-group">
+                            <label for="edit-job_company">Company</label>
                             <input
                                 type="text"
-                                id="profil_lastname"
-                                name="lastname"
-                                disabled
+                                id="edit-job_company"
+                                name="company"
                             />
                         </div>
-                        <div class="profil_form-group">
-                            <label for="profil_email">Email</label>
-                            <input
-                                type="email"
-                                id="profil_email"
-                                name="email"
-                                disabled
-                            />
-                        </div>
-                        <div class="profil_form-group">
-                            <label for="profil_github">GitHub</label>
+                        <div class="edit-job_form-group">
+                            <label for="edit-job_website">Website</label>
                             <input
                                 type="url"
-                                id="profil_github"
-                                name="github"
-                                pattern="https://github.com/.*"
-                                disabled
+                                id="edit-job_website"
+                                name="website"
                             />
                         </div>
-                        <div class="profil_form-group">
-                            <label for="profil_cv">CV</label>
-                            <a
-                                id="cvLink"
-                                href="#"
-                                target="_blank"
-                                style="display: none"
-                                >Download CV</a
+                        <div class="edit-job_form-group">
+                            <label for="edit-job_contactName"
+                                >Contact Name</label
                             >
                             <input
-                                type="file"
-                                id="cvUpload"
-                                name="cv"
-                                accept="application/pdf"
-                                disabled
+                                type="text"
+                                id="edit-job_contactName"
+                                name="contactName"
                             />
                         </div>
-                        <div class="profil_button-container">
-                            <button
-                                type="button"
-                                id="profil_editButton"
-                                class="profil_button profil_edit-button"
+                        <div class="edit-job_form-group">
+                            <label for="edit-job_contactEmail"
+                                >Contact Email</label
                             >
-                                Edit
-                            </button>
+                            <input
+                                type="email"
+                                id="edit-job_contactEmail"
+                                name="contactEmail"
+                            />
+                        </div>
+                        <div class="edit-job_form-group">
+                            <label for="edit-job_contactPhone"
+                                >Contact Phone</label
+                            >
+                            <input
+                                type="tel"
+                                id="edit-job_contactPhone"
+                                name="contactPhone"
+                            />
+                        </div>
+                        <div class="edit-job_form-group">
+                            <label for="edit-job_contactAddress"
+                                >Contact Address</label
+                            >
+                            <input
+                                type="text"
+                                id="edit-job_contactAddress"
+                                name="contactAddress"
+                            />
+                        </div>
+                        <div class="edit-job_form-group">
+                            <label for="edit-job_origin">Origin</label>
+                            <input
+                                type="text"
+                                id="edit-job_origin"
+                                name="origin"
+                            />
+                        </div>
+                        <div class="edit-job_form-group">
+                            <label for="edit-job_status">Status</label>
+                            <input
+                                type="text"
+                                id="edit-job_status"
+                                name="status"
+                            />
+                        </div>
+                        <div class="edit-job_form-group">
+                            <label for="edit-job_comments">Comments</label>
+                            <textarea
+                                id="edit-job_comments"
+                                name="comments"
+                            ></textarea>
+                        </div>
+                        <div class="edit-job_button-container">
                             <button
                                 type="submit"
-                                id="profil_saveButton"
-                                class="profil_button profil_save-button"
-                                disabled
+                                id="edit-job_saveButton"
+                                class="edit-job_button edit-job_save-button"
                             >
                                 Save
                             </button>
