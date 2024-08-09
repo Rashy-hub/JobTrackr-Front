@@ -76,7 +76,11 @@ function setupForm() {
     const formFields = document.querySelectorAll('#profil_profileForm input')
 
     editButton.addEventListener('click', () => {
-        formFields.forEach((field) => (field.disabled = false))
+        formFields.forEach((field) => {
+            if (!(field.id === 'profil_email')) {
+                field.disabled = false
+            }
+        })
         saveButton.disabled = false
     })
 
