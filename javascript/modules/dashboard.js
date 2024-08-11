@@ -23,9 +23,18 @@ async function initDashboard() {
         const jobListElement = document.getElementById('job-list')
         jobListElement.innerHTML = jobs
             .map((job) => {
-                const formattedDate = new Date(
-                    job.createdAt
-                ).toLocaleDateString()
+                const date = new Date(job.createdAt)
+
+                // Format date to DD/MM/YYYY
+                const day = date.getDate().toString().padStart(2, '0')
+                const month = (date.getMonth() + 1).toString().padStart(2, '0')
+                const year = date.getFullYear()
+
+                // Format time to hh:mm
+                const hours = date.getHours().toString().padStart(2, '0')
+                const minutes = date.getMinutes().toString().padStart(2, '0')
+
+                const formattedDate = `${day}/${month}/${year} - ${hours}h${minutes}`
 
                 const statusClass = job.userExtraInfo.status
 
@@ -43,7 +52,7 @@ async function initDashboard() {
                                 job.company
                             }</h3>
                        
-                            
+                            <h4>Created at ${formattedDate}</h4>
                             <a href="jobDetails.html?id=${
                                 job._id
                             }" class="see-more">See More</a>
