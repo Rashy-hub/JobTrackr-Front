@@ -62,6 +62,7 @@ header {
   z-index: 2;
 }
 header .logo {
+  margin-top: 10px;
   width: 150px;
   height: 130px;
   border-radius: 50%;
@@ -83,6 +84,45 @@ nav {
           justify-content: space-between;
   gap: 20px;
   width: 100%;
+}
+
+/* Container for buttons */
+.login-register_buttons {
+  text-align: center; /* Centers the buttons */
+  margin-top: 20px; /* Adds space above the buttons */
+}
+
+/* Style for login and register buttons */
+.header-login_button,
+.header-register_button {
+  text-decoration: none; /* Removes the underline from the links */
+  color: #ffffff; /* Sets the text color to white */
+  background-color: #007bff; /* Sets the background color to blue */
+  padding: 10px 20px; /* Adds padding inside the buttons */
+  border-radius: 5px; /* Rounds the corners of the buttons */
+  font-size: 16px; /* Sets the font size */
+  margin: 0 5px; /* Adds horizontal spacing between the buttons */
+  display: inline-block; /* Ensures the buttons sit next to each other */
+  -webkit-transition: background-color 0.3s ease, -webkit-transform 0.3s ease;
+  transition: background-color 0.3s ease, -webkit-transform 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease, -webkit-transform 0.3s ease; /* Adds smooth transitions */
+}
+
+/* Hover effect for buttons */
+.header-login_button:hover,
+.header-register_button:hover {
+  background-color: #0056b3; /* Changes the background color on hover */
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px); /* Slightly raises the button on hover */
+}
+
+/* Style for the separator (/) */
+.login-register_buttons span {
+  color: #000000; /* Sets the color for the separator */
+  font-weight: 900;
+  font-size: 2rem;
+  margin: 0 1px; /* Adds spacing around the separator */
 }
 
 .nav-links {
