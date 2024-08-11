@@ -7,25 +7,13 @@ window.addEventListener('load', () => {
         console.log('login.js entry point')
         console.log('Window loaded for the first time.')
 
-        // Set a flag in sessionStorage
         sessionStorage.setItem('pageLoaded', 'true')
     } else {
-        // Code to run on subsequent page loads
         console.log('Window has been loaded before.')
     }
     initParticles()
 })
 
-// Function to get query parameters
-function getQueryParams() {
-    const params = new URLSearchParams(window.location.search)
-    return {
-        email: params.get('email'),
-        password: params.get('password'),
-    }
-}
-
-// Pre-fill form fields with query parameters
 function prefillForm() {
     const myemail = document.getElementById('login_email')
     const mypassword = document.getElementById('login_password')
@@ -38,12 +26,9 @@ const myForm = document.forms[0]
 
 myForm.onsubmit = (event) => {
     event.preventDefault()
-    //firstname , lastname ,email,github,profile-picture,password,confirm-password
-    const myfields = ['email', 'password']
-    //FROM HERE I DONT KNOW IF IT IS CORRECT
-    //I WANT TO BE ABLE TO SEND AN OBJECT LIKE KEY VALUE WITH ONLY THE FIELDS THAT ARE NOT EMPTY
 
-    // Initialize an object to hold the filled fields
+    const myfields = ['email', 'password']
+
     const filledFields = {}
 
     for (const field of myfields) {
@@ -61,8 +46,6 @@ myForm.onsubmit = (event) => {
             localStorage.setItem('userID', userdata.user.id)
             localStorage.setItem('username', username)
             window.location.href = '/pages/dashboard.html'
-            console.log(userdata.token)
-            // window.location.href = '../pages/login.html'
         })
         .catch((err) => {
             console.log(err)
@@ -72,3 +55,8 @@ myForm.onsubmit = (event) => {
 
     console.log('submit event fired')
 }
+const myLogo = document.querySelector('.logo')
+myLogo.addEventListener('click', (event) => {
+    //refresh when logo is clikk
+    location.reload()
+})

@@ -59,6 +59,11 @@ logoutButton.addEventListener('click', (event) => {
     window.location.href = '/pages/login.html'
 })
 
+const myLogo = document.querySelector('.logo')
+myLogo.addEventListener('click', (event) => {
+    //refresh when logo is clikk
+    location.reload()
+})
 function initClearButton() {
     document
         .querySelector('.clear-job-button')

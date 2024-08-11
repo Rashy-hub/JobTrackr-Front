@@ -28,7 +28,7 @@ header {
 
     .logo {
         width: 150px;
-        height: 150px;
+        height: 130px;
         border-radius: 50%;
         overflow: hidden;
         cursor: pointer;
@@ -46,10 +46,11 @@ nav {
 .nav-links {
     @include base.flex-container;
     gap: 20px;
+    color: #000035;
 
     a {
         font-weight: 600;
-        color: #0b0000;
+        color: #000035;
         font-size: 2rem;
         text-decoration: none;
         transition: color 0.3s;
@@ -146,7 +147,7 @@ nav {
     font-family: 'Playfair Display', serif;
     font-size: 2rem;
     font-weight: 600;
-    color: #000000;
+    color: #000035;
     margin-right: 10px;
 }
 
@@ -160,5 +161,11 @@ nav {
 
     &:hover {
         color: #f3f3f3;
+    }
+}
+
+@media (max-width: 700px) {
+    .username {
+        display: none;
     }
 }

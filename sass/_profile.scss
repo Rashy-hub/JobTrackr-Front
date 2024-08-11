@@ -41,7 +41,7 @@
 .profil_title {
     text-align: center;
     font-size: 2rem; /* Adjust font size as needed */
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
 }
 
 /* Container for profile picture and form elements */
@@ -73,10 +73,16 @@
     margin-bottom: 15px;
     text-align: center; /* Center the text */
 }
+.profil_form-group a {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
 
 .profil_form-group label {
+    font-family: 'Playfair Display', serif;
     display: block;
     margin-bottom: 5px;
+
     font-weight: bold;
 }
 
@@ -84,11 +90,11 @@
     font-family: 'Playfair Display', serif;
     font-size: 24px;
     font-weight: bolder;
-    width: calc(100% - 20px); /* Full width minus padding */
+    width: calc(100% - 100px); /* Full width minus padding */
     padding: 8px;
-    border: 1px solid #ccc;
+    border: 1px solid #060000;
     border-radius: 4px;
-    background-color: #f9f9f9;
+    background-color: rgba(255, 255, 255, 0.217);
     box-sizing: border-box; /* Include padding and border in element's total width and height */
 }
 

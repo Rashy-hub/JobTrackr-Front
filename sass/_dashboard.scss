@@ -16,6 +16,10 @@
     align-items: center;
     padding: 20px;
 }
+.dashboard-buttons-container {
+    margin-top: 2rem;
+    display: flex;
+}
 
 .add-job-button,
 .clearall-job-button,
@@ -23,7 +27,8 @@
     margin-left: 20px;
     padding: 10px 20px;
     background-color: #4caf50;
-    color: white;
+    color: #000035;
+    font-weight: 500;
     border: none;
     border-radius: 5px;
     text-decoration: none;

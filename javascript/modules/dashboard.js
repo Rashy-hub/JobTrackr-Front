@@ -109,6 +109,12 @@ logoutButton.addEventListener('click', (event) => {
 
     window.location.href = '/pages/login.html'
 })
+
+const myLogo = document.querySelector('.logo')
+myLogo.addEventListener('click', (event) => {
+    //refresh when logo is clikk
+    location.reload()
+})
 function getAllJobIds() {
     // Select all elements with the class 'job-card' and a 'data-id' attribute
     const jobCards = document.querySelectorAll('.job-card[data-id]')

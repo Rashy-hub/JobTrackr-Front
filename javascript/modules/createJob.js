@@ -56,37 +56,6 @@ jobForm.onsubmit = async (event) => {
         },
     }
 
-    /*{
-      -----------------HERE IS WHAT I SEND FROM POSTMAN THAT WORKS FINE ------------------------------------
-    "title": "Front end dev",
-    "website": "https://front-company.com",
-    "contact": {
-        "name": "Alice Johnson",
-        "email": "alice.johnson@data-company.com",
-        "phone": "+11876543231",
-        "address": "456 Data Rd, City, Country"
-    },
-    "userExtraInfo": {
-        "origin": "Candidature spontanée",
-        "status": "CV sent",
-        "comments": "Looking forward to hearing back."
-    }
-} 
-    -----------------HERE IS WHAT I SEND FROM MY FRONT ------------------------------------
-    {
-  "title": "My first job from front",
-  "website": "https://bullshit.com",
-  "contact.name": "apple",
-  "contact.email": "apple@gmail.com",
-  "contact.phone": "+32499658912",
-  "contact.address": "rue de ta maman 72",
-  "userExtraInfo.origin": "job offer",
-  "userExtraInfo.status": "negative",
-  "userExtraInfo.comments": "Test test test"
-}
-
-*/
-    // Get the request URL configuration
     const requestURL = getDynamicUrl('CREATE_JOB', payload)
 
     const response = await fetchData(requestURL)
@@ -97,14 +66,17 @@ jobForm.onsubmit = async (event) => {
                 message: `Job ${payload.body.title} added`,
             })
             window.location.href = `/pages/dashboard.html`
-            // window.location.href = '../pages/login.html'
         })
         .catch((err) => {
             console.log(err)
-
-            //display function custom error
         })
 }
+const myLogo = document.querySelector('.logo')
+myLogo.addEventListener('click', (event) => {
+    //refresh when logo is clikk
+    location.reload()
+})
+
 window.addEventListener('load', () => {
     initParticles()
     setupDropdownVisibility()

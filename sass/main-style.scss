@@ -42,7 +42,7 @@ body {
 body {
     // background: rgba(128, 128, 128, 0.548);
 
-    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    background: linear-gradient(to right, #ff7f5fdc, #feb47bdc);
 }
 .body-noscroll {
     overflow: hidden;
@@ -53,9 +53,10 @@ img {
     object-fit: fill;
 }
 h1 {
+    color: #000035;
     margin-top: 2rem;
     font-family: 'Playfair Display', serif;
-    font-size: 24px;
+    font-size: 32px;
     font-weight: 700;
     line-height: 29.05px;
     text-align: center;

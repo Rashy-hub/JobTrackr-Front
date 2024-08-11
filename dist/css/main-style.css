@@ -63,7 +63,7 @@ header {
 }
 header .logo {
   width: 150px;
-  height: 150px;
+  height: 130px;
   border-radius: 50%;
   overflow: hidden;
   cursor: pointer;
@@ -93,10 +93,11 @@ nav {
       -ms-flex-align: center;
           align-items: center;
   gap: 20px;
+  color: #000035;
 }
 .nav-links a {
   font-weight: 600;
-  color: #0b0000;
+  color: #000035;
   font-size: 2rem;
   text-decoration: none;
   -webkit-transition: color 0.3s;
@@ -197,7 +198,7 @@ nav {
   font-family: "Playfair Display", serif;
   font-size: 2rem;
   font-weight: 600;
-  color: #000000;
+  color: #000035;
   margin-right: 10px;
 }
 
@@ -214,6 +215,11 @@ nav {
   color: #f3f3f3;
 }
 
+@media (max-width: 700px) {
+  .username {
+    display: none;
+  }
+}
 /* @import '_variables.scss';
 @import '_general.scss';
 @import '_register.scss';
@@ -288,7 +294,7 @@ main {
 .profil_title {
   text-align: center;
   font-size: 2rem; /* Adjust font size as needed */
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
 }
 
 /* Container for profile picture and form elements */
@@ -329,7 +335,13 @@ main {
   text-align: center; /* Center the text */
 }
 
+.profil_form-group a {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
 .profil_form-group label {
+  font-family: "Playfair Display", serif;
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
@@ -339,11 +351,11 @@ main {
   font-family: "Playfair Display", serif;
   font-size: 24px;
   font-weight: bolder;
-  width: calc(100% - 20px); /* Full width minus padding */
+  width: calc(100% - 100px); /* Full width minus padding */
   padding: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid #060000;
   border-radius: 4px;
-  background-color: #f9f9f9;
+  background-color: rgba(255, 255, 255, 0.217);
   -webkit-box-sizing: border-box;
           box-sizing: border-box; /* Include padding and border in element's total width and height */
 }
@@ -623,13 +635,21 @@ main {
   padding: 20px;
 }
 
+.dashboard-buttons-container {
+  margin-top: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .add-job-button,
 .clearall-job-button,
 .populate-job-button {
   margin-left: 20px;
   padding: 10px 20px;
   background-color: #4caf50;
-  color: white;
+  color: #000035;
+  font-weight: 500;
   border: none;
   border-radius: 5px;
   text-decoration: none;
@@ -831,6 +851,19 @@ main {
       -ms-flex-align: center;
           align-items: center;
   padding: 20px;
+  background: rgba(255, 255, 255, 0); /* Semi-transparent white background */
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px); /* Apply a blur effect to the area behind the container */
+  -webkit-box-shadow: inset 1px 1px 3px #ffffff, inset -1px -1px 3px #a0a0a0, 2px 2px 6px rgba(0, 0, 0, 0.2);
+          box-shadow: inset 1px 1px 3px #ffffff, inset -1px -1px 3px #a0a0a0, 2px 2px 6px rgba(0, 0, 0, 0.2);
+  /* Optional: add a border or additional styling */
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 2rem;
+  padding: 20px;
+  width: 600px; /* Adjust width as needed */
+  margin: 0 auto; /* Center the container */
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional shadow effect */
 }
 .create_main .create_title {
   font-family: "Playfair Display", serif;
@@ -858,10 +891,14 @@ main {
 .create_main .create_container .create_form .create_textarea {
   padding: 8px;
   margin-bottom: 10px;
-  border: 1px solid #ccc;
   border-radius: 4px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  width: 100%; /* Full width minus padding */
+  padding: 8px;
+  border: 1px solid #060000;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.217);
 }
 .create_main .create_container .create_form .create_button {
   padding: 10px;
@@ -1062,6 +1099,7 @@ main {
 }
 
 .edit-job_form-group label {
+  font-family: "Playfair Display", serif;
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
@@ -1071,15 +1109,16 @@ main {
 .edit-job_form-group select,
 .edit-job_form-group textarea {
   font-family: "Playfair Display", serif;
-  font-size: 24px;
+  font-size: 16px;
   font-weight: bolder;
   width: calc(100% - 20px);
   padding: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid #080000;
   border-radius: 4px;
-  background-color: #f9f9f9;
+  background-color: rgba(255, 255, 255, 0.217);
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  color: rgb(0, 0, 0);
 }
 
 .edit-job_form-group p {
@@ -1240,8 +1279,8 @@ body {
 }
 
 body {
-  background: -webkit-gradient(linear, left top, right top, from(#ff7e5f), to(#feb47b));
-  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  background: -webkit-gradient(linear, left top, right top, from(rgba(255, 127, 95, 0.862745098)), to(rgba(254, 180, 123, 0.862745098)));
+  background: linear-gradient(to right, rgba(255, 127, 95, 0.862745098), rgba(254, 180, 123, 0.862745098));
 }
 
 .body-noscroll {
@@ -1256,9 +1295,10 @@ img {
 }
 
 h1 {
+  color: #000035;
   margin-top: 2rem;
   font-family: "Playfair Display", serif;
-  font-size: 24px;
+  font-size: 32px;
   font-weight: 700;
   line-height: 29.05px;
   text-align: center;

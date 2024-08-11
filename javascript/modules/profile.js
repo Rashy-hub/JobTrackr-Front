@@ -28,6 +28,11 @@ logoutButton.addEventListener('click', () => {
 
     window.location.href = '/pages/login.html'
 })
+const myLogo = document.querySelector('.logo')
+myLogo.addEventListener('click', (event) => {
+    //refresh when logo is clikk
+    location.reload()
+})
 
 window.addEventListener('load', () => {
     initParticles()
@@ -41,8 +46,8 @@ async function getProfilAndLoadDom() {
     const requestURL = getDynamicUrl('GET_PROFIL')
     console.log('Going to get profile for current user')
     const result = await fetchData(requestURL)
-    console.log(result)
-
+    const cvUpload = document.getElementById('cvUpload')
+    cvUpload.style.visibility = 'hidden'
     if (result) {
         document.getElementById('profil_firstname').value =
             result.firstname || ''
@@ -76,6 +81,8 @@ function setupForm() {
     const formFields = document.querySelectorAll('#profil_profileForm input')
 
     editButton.addEventListener('click', () => {
+        const cvUpload = document.getElementById('cvUpload')
+        cvUpload.style.visibility = 'visible'
         formFields.forEach((field) => (field.disabled = false))
         saveButton.disabled = false
     })
@@ -88,6 +95,7 @@ function setupForm() {
             return
         }
         await saveChanges()
+
         formFields.forEach((field) => (field.disabled = true))
         saveButton.disabled = true
     })
@@ -118,6 +126,7 @@ async function saveChanges() {
 
     if (userdata) {
         console.log('Profile updated successfully:')
+        localStorage.setItem('username', formData.get('firstname'))
         window.location.href = '/pages/profile.html'
     } else {
         console.log('Error updating profile')

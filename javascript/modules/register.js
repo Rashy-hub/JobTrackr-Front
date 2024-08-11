@@ -2,6 +2,11 @@ import { fetchData, getDynamicUrl } from '../libs/apiHandlers.js'
 import { initParticles } from '../libs/particle-style.js'
 
 console.log('register.js entry point')
+const myLogo = document.querySelector('.logo')
+myLogo.addEventListener('click', (event) => {
+    //refresh when logo is clikk
+    location.reload()
+})
 
 window.addEventListener('load', () => {
     const myForm = document.forms[0]
