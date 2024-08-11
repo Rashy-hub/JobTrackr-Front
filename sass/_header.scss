@@ -23,7 +23,9 @@ header {
     max-height: 100px;
     backdrop-filter: blur(8px);
     font-family: 'Playfair Display', serif;
-    position: relative; /* Ensure proper stacking context */
+    position: fixed; /* Ensure proper stacking context */
+    width: 100%;
+
     z-index: 2;
 
     .logo {
