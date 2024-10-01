@@ -64,8 +64,8 @@ async function initDashboard() {
         const iso = new Isotope(jobListElement, {
             itemSelector: '.job-card',
             layoutMode: 'fitRows',
-            transitionDuration: '0.4s', // Adjust the duration for smoother animation
-            stagger: 30, // Add a slight stagger to the animation
+            transitionDuration: '0.4s',
+            stagger: 30,
             getSortData: {
                 date: '[data-date] parseInt',
             },

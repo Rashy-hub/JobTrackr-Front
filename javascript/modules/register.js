@@ -35,7 +35,6 @@ window.addEventListener('load', () => {
         // Get the request URL configuration
         const requestURL = getDynamicUrl('REGISTER_USER', payload)
 
-        // Fetch data and handle response
         const userdata = await fetchData(requestURL)
         if (userdata && userdata.user) {
             const username = userdata.user.firstname
@@ -46,7 +45,6 @@ window.addEventListener('load', () => {
             window.location.href = `/pages/dashboard.html`
         } else {
             console.log('Registration failed')
-            // Optionally, handle the case when registration fails
         }
     }
 

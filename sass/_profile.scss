@@ -5,8 +5,8 @@
     height: 100%;
     top: 0;
     left: 0;
-    z-index: -1; /* Ensure particles are in the background */
-    pointer-events: none; /* Ensure other elements don't block mouse events */
+    z-index: -1;
+    pointer-events: none;
 }
 
 /* Profile page main styling */
@@ -20,27 +20,25 @@
 
 /* Container for profile information */
 .profil_container {
-    background: rgba(255, 255, 255, 0); /* Semi-transparent white background */
-    backdrop-filter: blur(
-        2px
-    ); /* Apply a blur effect to the area behind the container */
+    background: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(2px);
     box-shadow: inset 1px 1px 3px #ffffff, inset -1px -1px 3px #a0a0a0,
         2px 2px 6px rgba(0, 0, 0, 0.2);
-    /* Optional: add a border or additional styling */
+
     border: 1px solid rgba(0, 0, 0, 0.1);
 
     border-radius: 2rem;
 
     padding: 20px;
-    width: 600px; /* Adjust width as needed */
-    margin: 0 auto; /* Center the container */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional shadow effect */
+    width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Title styling */
 .profil_title {
     text-align: center;
-    font-size: 2rem; /* Adjust font size as needed */
+    font-size: 2rem;
     margin-bottom: 2rem;
 }
 
@@ -71,7 +69,7 @@
 /* Form group styling */
 .profil_form-group {
     margin-bottom: 15px;
-    text-align: center; /* Center the text */
+    text-align: center;
 }
 .profil_form-group a {
     font-size: 2rem;
@@ -95,7 +93,7 @@
     border: 1px solid #060000;
     border-radius: 4px;
     background-color: rgba(255, 255, 255, 0.217);
-    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    box-sizing: border-box;
 }
 
 /* Styling for editable paragraphs (if used) */
@@ -105,12 +103,12 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: #f9f9f9;
-    margin: 0 auto; /* Center paragraphs */
-    cursor: text; /* Text cursor on hover */
+    margin: 0 auto;
+    cursor: text;
 }
 
 .profil_form-group p[data-editable] {
-    outline: none; /* Remove outline when editable */
+    outline: none;
 }
 
 /* Button styling */

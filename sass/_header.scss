@@ -48,37 +48,37 @@ nav {
 
 /* Container for buttons */
 .login-register_buttons {
-    text-align: center; /* Centers the buttons */
-    margin-top: 20px; /* Adds space above the buttons */
+    text-align: center;
+    margin-top: 20px;
 }
 
 /* Style for login and register buttons */
 .header-login_button,
 .header-register_button {
-    text-decoration: none; /* Removes the underline from the links */
-    color: #ffffff; /* Sets the text color to white */
-    background-color: #007bff; /* Sets the background color to blue */
-    padding: 10px 20px; /* Adds padding inside the buttons */
-    border-radius: 5px; /* Rounds the corners of the buttons */
-    font-size: 16px; /* Sets the font size */
-    margin: 0 5px; /* Adds horizontal spacing between the buttons */
-    display: inline-block; /* Ensures the buttons sit next to each other */
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Adds smooth transitions */
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #007bff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 0 5px;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 /* Hover effect for buttons */
 .header-login_button:hover,
 .header-register_button:hover {
-    background-color: #0056b3; /* Changes the background color on hover */
-    transform: translateY(-2px); /* Slightly raises the button on hover */
+    background-color: #0056b3;
+    transform: translateY(-2px);
 }
 
 /* Style for the separator (/) */
 .login-register_buttons span {
-    color: #000000; /* Sets the color for the separator */
+    color: #000000;
     font-weight: 900;
     font-size: 2rem;
-    margin: 0 1px; /* Adds spacing around the separator */
+    margin: 0 1px;
 }
 .nav-links {
     @include base.flex-container;
@@ -112,7 +112,7 @@ nav {
         #dropbtn {
             width: 2rem;
             height: 2rem;
-            background: transparent; /* Make background transparent */
+            background: transparent;
             border: none;
             border-radius: 50%;
             backdrop-filter: blur(8px);
@@ -127,9 +127,9 @@ nav {
     }
 
     .dropdown-content {
-        display: none; /* Hide by default */
+        display: none;
         position: absolute;
-        top: 100%; /* Align below the button */
+        top: 100%;
 
         right: -5px;
         top: 50px;

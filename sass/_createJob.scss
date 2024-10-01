@@ -7,37 +7,34 @@
     height: 100%;
     top: 0;
     left: 0;
-    z-index: -2; /* Ensure particles are in the background */
+    z-index: -2;
 }
 
 // Main container styles
 .create_main {
     font-family: 'Playfair Display', serif;
     position: relative;
-    z-index: 1; /* Ensure content is above particles */
+    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
 
-    background: rgba(255, 255, 255, 0); /* Semi-transparent white background */
-    backdrop-filter: blur(
-        2px
-    ); /* Apply a blur effect to the area behind the container */
+    background: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(2px);
     box-shadow: inset 1px 1px 3px #ffffff, inset -1px -1px 3px #a0a0a0,
         2px 2px 6px rgba(0, 0, 0, 0.2);
-    /* Optional: add a border or additional styling */
+
     border: 1px solid rgba(0, 0, 0, 0.1);
 
     border-radius: 2rem;
 
     padding: 20px;
-    width: 600px; /* Adjust width as needed */
+    width: 600px;
 
-    margin: 0 auto; /* Center the container */
+    margin: 0 auto;
     margin-top: 5rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional shadow effect */
-
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     .create_title {
         font-family: 'Playfair Display', serif;
         font-size: 2rem;
@@ -48,8 +45,8 @@
         .create_form {
             display: flex;
             flex-direction: column;
-            width: 300px; /* Adjust the width as needed */
-            margin: 0 auto; /* Center the form on the page */
+            width: 300px;
+            margin: 0 auto;
 
             .create_label {
                 margin-top: 10px;
@@ -66,7 +63,7 @@
                 border-radius: 4px;
                 box-sizing: border-box;
 
-                width: calc(100%); /* Full width minus padding */
+                width: calc(100%);
                 padding: 8px;
                 border: 1px solid #060000;
                 border-radius: 4px;
